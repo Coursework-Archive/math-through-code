@@ -1,0 +1,9 @@
+# ---- Virtual Environment ----
+.venv/
+
+
+# ---- PyCharm / IntelliJ ----
+.idea/
+
+# ---- Auto-save / Checkpoint ----
+*~
