@@ -63,7 +63,7 @@ The MITx 6.00.2x course includes:
 | Week        | Topic                                                                         | Status | Notes |
 |-------------|-------------------------------------------------------------------------------|--------|-|
 | Preliminary | Enroll at edX – MITx Introduction to Computational Thinking and Data Science  | 🟩 Done | Completed Oct 25 |
-| Week 1      | Computational Thinking & Python Review                                        | 🟩 Done |Copmleted Nov 8|
+| Week 1      | Computational Thinking & Python Review                                        | 🟩 Done | Completed Nov 8 |
 | Week 2      | Simulation & Randomness                                                       | 🟨 In Progress ||
 | Week 3      | Distributions & Sampling                                                      | 🟨 In Progress ||
 | Week 4      | Monte Carlo Methods                                                           | ⬜ Not Started ||
