@@ -62,16 +62,16 @@ The MITx 6.00.2x course includes:
 ### 🧾 Progress Tracker
 | Week        | Topic                                                                         | Status | Notes |
 |-------------|-------------------------------------------------------------------------------|--------|-|
-| Preliminary | Enroll at edX – MITx Introduction to Computational Thinking and Data Science  | 🟩 Done | Completed on Nov  25 |
-| Week 1      | Computational Thinking & Python Review                                        | 🟨 In Progress ||
-| Week 2      | Simulation & Randomness                                                       | ⬜ Not Started | |
-| Week 3      | Distributions & Sampling                                                      | ⬜ Not Started | |
-| Week 4      | Monte Carlo Methods                                                           | ⬜ Not Started | |
-| Week 5      | Optimization & Search                                                         | ⬜ Not Started | |
-| Week 6      | Data Analysis & Modeling                                                      | ⬜ Not Started | |
-| Week 7      | Machine Learning Intro                                                        | ⬜ Not Started | |
-| Week 8      | Review & Final Project                                                        | ⬜ Not Started | |
-| Week 9      | Certificate + Repo Polish                                                     | ⬜ Not Started | |
+| Preliminary | Enroll at edX – MITx Introduction to Computational Thinking and Data Science  | 🟩 Done | Completed Oct 25 |
+| Week 1      | Computational Thinking & Python Review                                        | 🟩 Done |Copmleted Nov 8|
+| Week 2      | Simulation & Randomness                                                       | 🟨 In Progress ||
+| Week 3      | Distributions & Sampling                                                      | 🟨 In Progress ||
+| Week 4      | Monte Carlo Methods                                                           | ⬜ Not Started ||
+| Week 5      | Optimization & Search                                                         | ⬜ Not Started ||
+| Week 6      | Data Analysis & Modeling                                                      | ⬜ Not Started ||
+| Week 7      | Machine Learning Intro                                                        | ⬜ Not Started ||
+| Week 8      | Review & Final Project                                                        | ⬜ Not Started ||
+| Week 9      | Certificate + Repo Polish                                                     | ⬜ Not Started ||
 
 ---
 
