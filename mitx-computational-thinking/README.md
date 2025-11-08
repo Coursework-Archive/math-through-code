@@ -28,16 +28,12 @@ mitx-computational-thinking/
 │   ├── 02_linear_regression_from_scratch.ipynb
 │   ├── 03_optimization_and_random_search.ipynb
 │
-├── data/
-│   ├── example_datasets/
-│
-├── scripts/
-│   ├── utils/
-│   │   ├── plotting.py
-│   │   └── probability_helpers.py
+├── problem_sets/
+│   ├── ps1/
 │
 └── notes/
-    ├── week1_computational_thinking.md
+    ├── syllabus.pdf
+    ├── week1_optimization_and_knapsack_problem.md
     ├── week2_simulation_notes.md
     └── week3_modeling_notes.md
 ```

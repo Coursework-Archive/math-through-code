@@ -54,8 +54,21 @@ def greedy_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
+    sorted_cows = sorted(cows.items(), key= lambda x: x[1], reverse=True)
+    result = []
+
+    while sorted_cows:
+        sublist = []
+        totalWeight = 0
+        for cow in sorted_cows[:]:
+            name, weight = cow
+            if totalWeight + weight <= limit:
+                sublist.append(name)
+                sorted_cows.remove(cow)
+                totalWeight += weight
+        result.append(sublist)
+    return result
+
 
 
 # Problem 2
@@ -79,8 +92,22 @@ def brute_force_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
+    items = cows.items() if isinstance(cows, dict) else cows
+    feasible = (
+        p for p in get_partitions(items)
+        if all(sum(w for n, w in subset) <= limit for subset in p)
+    )
+    try:
+        best = min(feasible, key=len, default=None)
+    except ValueError:
+        return []
+
+    return [[name for name, _ in subset] for subset in best]
+
+
+
+
+
 
         
 # Problem 3
@@ -97,21 +124,24 @@ def compare_cow_transport_algorithms():
     Returns:
     Does not return anything.
     """
-    # TODO: Your code here
-    pass
+    cows = load_cows("ps1_cow_data.txt")
+    limit = 10
+    start = time.time()
+    c = greedy_cow_transport(cows, limit)
+    end = time.time()
+    print("Number of trips returned by greedy_cow_transport:", len(c))
+    print("Greedy cow transport took {} seconds.".format(end - start))
+
+    start1 = time.time()
+    c1 = brute_force_cow_transport(cows, limit)
+    end1 = time.time()
+    print("Number of trips returned by greedy_cow_transport:", len(c1))
+    print("brute force cow transport took {} seconds.".format(end1 - start1))
 
 
-"""
-Here is some test data for you to see the results of your algorithms with. 
-Do not submit this along with any of your answers. Uncomment the last two
-lines to print the result of your problem.
-"""
 
-cows = load_cows("ps1_cow_data.txt")
-limit=100
-print(cows)
 
-# print(greedy_cow_transport(cows, limit))
-# print(brute_force_cow_transport(cows, limit))
+compare_cow_transport_algorithms()
+
 
 
