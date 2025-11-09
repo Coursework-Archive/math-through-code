@@ -60,18 +60,28 @@ The MITx 6.00.2x course includes:
 ---
 
 ### 🧾 Progress Tracker
-| Week        | Topic                                                                         | Status | Notes |
-|-------------|-------------------------------------------------------------------------------|--------|-|
-| Preliminary | Enroll at edX – MITx Introduction to Computational Thinking and Data Science  | 🟩 Done | Completed on Nov  25 |
-| Week 1      | Computational Thinking & Python Review                                        | 🟨 In Progress ||
-| Week 2      | Simulation & Randomness                                                       | ⬜ Not Started | |
-| Week 3      | Distributions & Sampling                                                      | ⬜ Not Started | |
-| Week 4      | Monte Carlo Methods                                                           | ⬜ Not Started | |
-| Week 5      | Optimization & Search                                                         | ⬜ Not Started | |
-| Week 6      | Data Analysis & Modeling                                                      | ⬜ Not Started | |
-| Week 7      | Machine Learning Intro                                                        | ⬜ Not Started | |
-| Week 8      | Review & Final Project                                                        | ⬜ Not Started | |
-| Week 9      | Certificate + Repo Polish                                                     | ⬜ Not Started | |
+| Week        | Topic                                                                        | Status          | Notes                      |
+|-------------|------------------------------------------------------------------------------|-----------------|----------------------------|
+| Preliminary | Enroll at edX – MITx Introduction to Computational Thinking and Data Science | 🟩 Done         | Completed on Oct  25       |
+| Week 1      | Optimization and Knapsack Problem                                            | 🟩 Done         | Completed Nov 1            |
+| Week 2      | Decision Trees and Dynamic Programming                                       | 🟩 Done         | Completed Nov 1            |
+| Week 3      | Graph Problems                                                               | 🟩 Done         | Completed Nov 8            |
+|             | Problem Set 1                                                                | 🟩 Done         | Completed Nov 2            |
+| Week 4      | Plotting                                                                     | 🟩 Done         | Completed Nov 8            |
+|             | Stochastic Thinking                                                          | 🟩 Done         | Completed Nov 8            |
+| Week 5      | Random Walks                                                                 | 🟨 In Progress  |                            |
+|             | Problem Set 2                                                                | 🟨 In Progress  | _Due Nov 20_               | 
+| Week 6      | Midterm                                                                      | ⬜ Not Started   | **Start Review by Nov 14** |
+|             | Inferential Statistics                                                       | ⬜ Not Started   |                            |
+|             | Monte Carlo Simulations                                                      | ⬜ Not Started   |                            |
+| Week 7      | Sampling and Standard Error                                                  | ⬜ Not Started   | w7 : Nov 26 - Dec 2        |
+|             | Problem Set 3                                                                | ⬜ Not Started   | _Due Dec 4_                |
+| Week 8      | Experimental Data                                                            | ⬜ Not Started   | w8 : Dec 3 - Dec 9         |
+|             | Problem Set 4                                                                | ⬜ Not Started   | _Due Dec 11_               |
+| Week 9      | Machine Learning                                                             | ⬜ Not Started   | w9 : Dec 10 - Dec 16       | 
+|             | Statistical Fallacies                                                        | ⬜ Not Started   |                            | 
+|             | Review & Final Exam                                                          | ⬜ Not Started   | **Start Review Dec 6**     |
+|             | Certificate + Repo Polish                                                    | ⬜ Not Started   | Complete by EOY            |
 
 ---
 
