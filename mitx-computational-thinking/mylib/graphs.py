@@ -90,6 +90,13 @@ class Digraph(object):
                 result += src.get_name() + " -> " + dest.get_name() + '\n'
         return result[:-1]  # omit final newline
 
+    def get_edges(self):
+        result = []
+        for src in self._edges:
+            for dest in self._edges[src]:
+                result.append((src, dest))
+        return result
+
 
 class Graph(Digraph):
 
