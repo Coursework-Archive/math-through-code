@@ -1,6 +1,6 @@
 import numpy as np
-import pylab
 import re
+import matplotlib.pyplot as plt
 
 # cities in our weather data
 CITIES = [
@@ -130,7 +130,14 @@ def generate_models(x, y, degs):
         a list of numpy arrays, where each array is a 1-d array of coefficients
         that minimizes the squared error of the fitting polynomial
     """
+    models = []
+    for d in degs:
+        model = np.polyfit(x, y, d)
+        models.append(model)
+    return models
 
+
+# print(generate_models([1961, 1962, 1963],[4.4,5.5,6.6],[1, 2]))
 
 # Problem 2
 def r_squared(y, estimated):
@@ -142,8 +149,14 @@ def r_squared(y, estimated):
     Returns:
         a float for the R-squared error term
     """
-    # TODO
-    pass
+    y = np.array(y)
+    estimated = np.array(estimated)
+
+    SEE = ((estimated - y) ** 2).sum()
+    mMean = np.mean(y)
+    MV = ((mMean - y) ** 2).sum()
+
+    return 1 - SEE / MV
 
 # Problem 3
 def evaluate_models_on_training(x, y, models):
@@ -167,11 +180,33 @@ def evaluate_models_on_training(x, y, models):
     Returns:
         None
     """
-    # TODO
-    pass
+    xArr = np.array(x)
+    yArr = np.array(y)
+
+    for model in models:
+        # evaluate polynomial using numpy
+        estYVals = np.polyval(model, xArr)
+
+        # compute R^2
+        r2 = r_squared(yArr, estYVals)
+
+        # compute the model's degree
+        degree = len(model) - 1
+
+        # plot the data
+        plt.figure()
+        plt.plot(xArr, yArr, 'bo', label='Data')
+        plt.plot(xArr, estYVals, 'r-', label='Model')
+
+        # labels and title
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.title('Degree {} model, R^2 = {:.4f}'.format(degree, r2))
+        plt.legend()
+        plt.show()
 
 
-### Begining of program
+## Beginning of program
 raw_data = Climate('data.csv')
 
 # Problem 3
@@ -186,7 +221,9 @@ evaluate_models_on_training(x, y, models)
 # Problem 4: FILL IN MISSING CODE TO GENERATE y VALUES
 x1 = INTERVAL_1
 x2 = INTERVAL_2
-y = []
-# MISSING LINES
-models = generate_models(x, y, [1])    
-evaluate_models_on_training(x, y, models)
+y1 = []
+for year in x1:
+    yearly_temps = raw_data.get_yearly_temp('BOSTON', year)
+    y1.append(np.mean(yearly_temps))
+models = generate_models(x1, y1, [1])
+evaluate_models_on_training(x1, y1, models)

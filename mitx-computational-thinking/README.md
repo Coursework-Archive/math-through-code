@@ -60,28 +60,28 @@ The MITx 6.00.2x course includes:
 ---
 
 ### 🧾 Progress Tracker
-| Week        | Topic                                                                        | Status          | Notes                  |
-|-------------|------------------------------------------------------------------------------|-----------------|------------------------|
-| Preliminary | Enroll at edX – MITx Introduction to Computational Thinking and Data Science | 🟩 Done         | Completed on Oct  25   |
-| Week 1      | Optimization and Knapsack Problem                                            | 🟩 Done         | Completed Nov 1        |
-| Week 2      | Decision Trees and Dynamic Programming                                       | 🟩 Done         | Completed Nov 1        |
-| Week 3      | Graph Problems                                                               | 🟩 Done         | Completed Nov 8        |
-|             | Problem Set 1                                                                | 🟩 Done         | Completed Nov 2        |
-| Week 4      | Plotting                                                                     | 🟩 Done         | Completed Nov 8        |
-|             | Stochastic Thinking                                                          | 🟩 Done         | Completed Nov 8        |
-| Week 5      | Random Walks                                                                 | 🟩 Done         | Completed Nov 15       |
-|             | Problem Set 2                                                                | 🟩 Done         | Completed Nov 15       | 
-| Week 6      | Midterm                                                                      | 🟩 Done         | Completed Nov 22       |
-|             | Inferential Statistics                                                       | 🟩 Done         | Completed Nov 29       |
-|             | Monte Carlo Simulations                                                      | 🟩 Done         | Completed Nov 30       |
-| Week 7      | Sampling and Standard Error                                                  | 🟨 In Progress  | w7 : Nov 26 - Dec 2    |
-|             | Problem Set 3                                                                | 🟩 Done         | Completed Noc 26       |
-| Week 8      | Experimental Data                                                            | 🟨 In Progress  | w8 : Dec 3 - Dec 9     |
-|             | Problem Set 4                                                                | ⬜ Not Started   | _Due Dec 11_           |
-| Week 9      | Machine Learning                                                             | ⬜ Not Started   | w9 : Dec 10 - Dec 16   | 
-|             | Statistical Fallacies                                                        | ⬜ Not Started   |                        | 
-|             | Review & Final Exam                                                          | ⬜ Not Started   | **Start Review Dec 6** |
-|             | Certificate + Repo Polish                                                    | ⬜ Not Started   | Complete by EOY        |
+| Week        | Topic                                                                        | Status | Notes                |
+|-------------|------------------------------------------------------------------------------|--|----------------------|
+| Preliminary | Enroll at edX – MITx Introduction to Computational Thinking and Data Science | 🟩 Done | Completed on Oct  25 |
+| Week 1      | Optimization and Knapsack Problem                                            | 🟩 Done | Completed Nov 1      |
+| Week 2      | Decision Trees and Dynamic Programming                                       | 🟩 Done | Completed Nov 1      |
+| Week 3      | Graph Problems                                                               | 🟩 Done | Completed Nov 8      |
+|             | Problem Set 1                                                                | 🟩 Done | Completed Nov 2      |
+| Week 4      | Plotting                                                                     | 🟩 Done | Completed Nov 8      |
+|             | Stochastic Thinking                                                          | 🟩 Done | Completed Nov 8      |
+| Week 5      | Random Walks                                                                 | 🟩 Done | Completed Nov 15     |
+|             | Problem Set 2                                                                | 🟩 Done | Completed Nov 15     | 
+| Week 6      | Midterm                                                                      | 🟩 Done | Completed Nov 22     |
+|             | Inferential Statistics                                                       | 🟩 Done | Completed Nov 29     |
+|             | Monte Carlo Simulations                                                      | 🟩 Done | Completed Nov 30     |
+| Week 7      | Sampling and Standard Error                                                  | 🟩 Done | Completed Dec 7      |
+|             | Problem Set 3                                                                | 🟩 Done | Completed Noc 26     |
+| Week 8      | Experimental Data                                                            | 🟩 Done | Completed Dec 7      |
+|             | Problem Set 4                                                                | 🟩 Done | Completed Dec 6      |
+| Week 9      | Machine Learning                                                             | 🟩 Done | Completed Dec 9      | 
+|             | Statistical Fallacies                                                        | 🟩 Done | Completed Dec 11     | 
+|             | Review & Final Exam                                                          | 🟩 Done | Completed Dec 13     |
+|             | Certificate + Repo Polish                                                    | ⬜ Not Started | Complete by EOY      |
 
 ---
 
