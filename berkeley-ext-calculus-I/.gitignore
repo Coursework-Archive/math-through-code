@@ -1,0 +1,37 @@
+# ----------------------
+# Python
+# ----------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# ----------------------
+# Virtual environments
+# ----------------------
+.venv/
+venv/
+env/
+
+# ----------------------
+# Jupyter Notebook
+# ----------------------
+.ipynb_checkpoints/
+
+# Optional: keep notebooks but ignore execution noise
+**/.ipynb_checkpoints/
+
+# ----------------------
+# Notebook exports (keep if you WANT them versioned)
+# ----------------------
+# Uncomment these if you decide NOT to track rendered outputs
+ *.html
+ *.pdf
+
+# ----------------------
+# JetBrains / PyCharm
+# ----------------------
+.idea/
+*.iml
+
