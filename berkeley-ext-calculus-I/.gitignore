@@ -26,8 +26,8 @@ env/
 # Notebook exports (keep if you WANT them versioned)
 # ----------------------
 # Uncomment these if you decide NOT to track rendered outputs
- *.html
- *.pdf
+notebooks/*.html
+notebooks/*.pdf
 
 # ----------------------
 # JetBrains / PyCharm
