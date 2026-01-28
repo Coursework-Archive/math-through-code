@@ -22,22 +22,22 @@ _Time zone: America/Los_Angeles_
 
 ## 📝 Assignments & Exams
 
-| Module / Exam | Official Name | Due Date | Submission | Status | Notes |
-|---------------|---------------|----------|------------|--------|-------|
-| Module 1 | Math X11 – Module 1 | Jan 25, 2026 | Module 1 Drop Box | 🟨 In Progress  | |
-| Module 2 | Math X11 – Module 2 | Feb 1, 2026 | Module 2 Drop Box | ⬜ Not Started | |
-| Module 3 | Math X11 – Module 3 | Feb 8, 2026 | Module 3 Drop Box | ⬜ Not Started | |
-| Module 4 | Math X11 – Module 4 | Feb 15, 2026 | Module 4 Drop Box | ⬜ Not Started | |
-| Module 5 | Math X11 – Module 5 | Feb 22, 2026 | Module 5 Drop Box | ⬜ Not Started | |
-| Module 6 | Math X11 – Module 6 | Mar 1, 2026 | Module 6 Drop Box | ⬜ Not Started | |
-| **Midterm Exam** | **Math X11 – Midterm Exam** | **Mar 8, 2026** | Exam | ⬜ Not Started | 3 hours |
-| Module 7 | Math X11 – Module 7 | Mar 15, 2026 | Module 7 Drop Box | ⬜ Not Started | |
-| Module 8 | Math X11 – Module 8 | Mar 22, 2026 | Module 8 Drop Box | ⬜ Not Started | |
-| Module 9 | Math X11 – Module 9 | Mar 29, 2026 | Module 9 Drop Box | ⬜ Not Started | |
-| Module 10 | Math X11 – Module 10 | Apr 5, 2026 | Module 10 Drop Box | ⬜ Not Started | |
-| Module 11 | Math X11 – Module 11 | Apr 12, 2026 | Module 11 Drop Box | ⬜ Not Started | |
-| Module 12 | Math X11 – Module 12 | Apr 19, 2026 | Module 12 Drop Box | ⬜ Not Started | |
-| **Final Exam** | **Math X11 – Final Exam** | **Apr 26, 2026** | Exam | ⬜ Not Started | 3 hours |
+| Module / Exam | Official Name | Due Date         | Submission | Status | Notes   |
+|---------------|---------------|------------------|------------|--|---------|
+| Module 1 | Math X11 – Module 1 | Jan 25, 2026     | Module 1 Drop Box | 🟩 Submitted | C01/27  |
+| Module 2 | Math X11 – Module 2 | Feb 1, 2026      | Module 2 Drop Box | 🟨 In Progress |         |
+| Module 3 | Math X11 – Module 3 | Feb 8, 2026      | Module 3 Drop Box | ⬜ Not Started |         |
+| Module 4 | Math X11 – Module 4 | Feb 15, 2026     | Module 4 Drop Box | ⬜ Not Started |         |
+| Module 5 | Math X11 – Module 5 | Feb 22, 2026     | Module 5 Drop Box | ⬜ Not Started |         |
+| Module 6 | Math X11 – Module 6 | Mar 1, 2026      | Module 6 Drop Box | ⬜ Not Started |         |
+| **Midterm Exam** | **Math X11 – Midterm Exam** | **Mar 13, 2026** | Exam | ⬜ Not Started | 3 hours |
+| Module 7 | Math X11 – Module 7 | Mar 22, 2026     | Module 7 Drop Box | ⬜ Not Started |         |
+| Module 8 | Math X11 – Module 8 | Mar 29, 2026     | Module 8 Drop Box | ⬜ Not Started |         |
+| Module 9 | Math X11 – Module 9 | Apr 5, 2026      | Module 9 Drop Box | ⬜ Not Started |         |
+| Module 10 | Math X11 – Module 10 | Apr 12, 2026     | Module 10 Drop Box | ⬜ Not Started |         |
+| Module 11 | Math X11 – Module 11 | Apr 19, 2026     | Module 11 Drop Box | ⬜ Not Started |         |
+| Module 12 | Math X11 – Module 12 | Apr 26, 2026     | Module 12 Drop Box | ⬜ Not Started |         |
+| **Final Exam** | **Math X11 – Final Exam** | **May 8, 2026**  | Exam | ⬜ Not Started | 3 hours |
 
 ---
 

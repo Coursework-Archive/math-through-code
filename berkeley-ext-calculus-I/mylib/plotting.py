@@ -6,12 +6,14 @@ import numpy as np
 import sympy as sp
 import matplotlib.pyplot as plt
 from typing import Sequence
+from typing import Iterable, Tuple, List, Optional
 from sympy.parsing.sympy_parser import (
     parse_expr,
     standard_transformations,
     implicit_multiplication_application,
     convert_xor,
 )
+Point = Tuple[float, float]
 
 # Allow:
 #  - implicit multiplication: 2x -> 2*x, (x+1)(x-1) -> (x+1)*(x-1)
@@ -21,13 +23,33 @@ _TRANSFORMS = (
     + (implicit_multiplication_application, convert_xor)
 )
 
+# ---- Plot styling defaults ----
+
+PRIMARY_LINE_COLOR = "#7b6cff"   # soft purple
+AXIS_COLOR = "#dddddd"
+GRID_MAJOR_ALPHA = 0.6
+GRID_MINOR_ALPHA = 0.4
+
 def equation_latex(equation: str) -> str:
     """
-    Return a LaTeX string for the equation, e.g. '2xy + 5y^2 = 4' -> r'2 x y + 5 y^{2} = 4'.
+    Return a LaTeX string for the equation.
     Does NOT include surrounding $...$.
     """
-    _, _, _, lhs, rhs = _parse_equation_to_expr(equation)
+    parsed = _parse_equation_to_expr(equation)
+
+    # Supports both old (5-tuple) and new (6-tuple) return shapes
+    lhs = parsed[3]
+    rhs = parsed[4]
+
     return f"{sp.latex(lhs)} = {sp.latex(rhs)}"
+
+# def equation_latex(equation: str) -> str:
+#     """
+#     Return a LaTeX string for the equation, e.g. '2xy + 5y^2 = 4' -> r'2 x y + 5 y^{2} = 4'.
+#     Does NOT include surrounding $...$.
+#     """
+#     _, _, _, lhs, rhs = _parse_equation_to_expr(equation)
+#     return f"{sp.latex(lhs)} = {sp.latex(rhs)}"
 
 
 def display_equation(equation: str) -> None:
@@ -45,6 +67,29 @@ def display_equation(equation: str) -> None:
         ) from e
 
     display(Math(latex_str))
+
+def label_latex(equation: str) -> str:
+    """
+    Lightweight LaTeX for labels/titles. Preserves function parentheses like f(x).
+    Does NOT attempt full symbolic parsing.
+    Returns a string WITHOUT surrounding $...$.
+    """
+    s = equation.strip()
+
+    # Convert ^ to exponent for LaTeX (optional)
+    s = s.replace("^", "^{")  # we'll close braces below carefully (see note)
+
+    # Better: handle simple x^2 patterns safely:
+    s = re.sub(r"\^(\d+)", r"^{\1}", s)
+
+    # Add thin space between a number and a variable: 2x -> 2\,x
+    s = re.sub(r"(\d)([A-Za-z])", r"\1\\,\2", s)
+
+    # Keep function calls intact: f(x) stays f(x)
+    # (no change needed)
+
+    return s
+
 
 
 def _parse_equation_to_expr(
@@ -206,7 +251,7 @@ def plot_equation(
         Z,
         levels=[0],
         linewidths=2.0,
-        colors="#7b6cff",  # soft purple
+        colors=PRIMARY_LINE_COLOR,
     )
 
     ax = plt.gca()
@@ -217,7 +262,7 @@ def plot_equation(
         which="major",
         linestyle="-",
         linewidth=0.6,
-        alpha=0.6,
+        alpha=GRID_MAJOR_ALPHA,
     )
     ax.minorticks_on()
     ax.grid(
@@ -225,13 +270,13 @@ def plot_equation(
         which="minor",
         linestyle="--",
         linewidth=0.4,
-        alpha=0.4,
+        alpha=GRID_MINOR_ALPHA,
     )
 
     # ---- Axes through origin ----
     if show_axes:
-        ax.axhline(0, color="#dddddd", linewidth=1.2)
-        ax.axvline(0, color="#dddddd", linewidth=1.2)
+        ax.axhline(0, color=AXIS_COLOR, linewidth=1.2)
+        ax.axvline(0, color=AXIS_COLOR, linewidth=1.2)
 
     ax.set_aspect("equal", adjustable="box")
     ax.set_xlim(xlim)
@@ -251,7 +296,7 @@ def plot_equation(
 
     # Optional: draw vertical asymptotes (dashed)
     for x0 in asymptotes:
-        ax.axvline(x0, linestyle="--", linewidth=1.0, alpha=0.6)
+        ax.axvline(x0, linestyle="--", linewidth=1.0, alpha=GRID_MAJOR_ALPHA)
 
     # ---- Title logic (this is the key part) ----
     if not display_latex:
@@ -321,3 +366,113 @@ def plot_data_points(
         plt.grid(True)
 
     plt.show()
+
+
+def transform_points(points: Iterable[Point],
+                     *,
+                     x_mult: float = 1.0,
+                     x_negate: bool = False,
+                     y_mult: float = 1.0,
+                     y_negate: bool = False) -> List[Point]:
+    out: List[Point] = []
+    """
+    Transform points for horizontal transformations of the form y = f(kx) or y = f(-x).
+
+    If y = f(kx), then x_new = x_old / k  -> set x_mult = 1/k.
+      - y = f(2x):  x_mult = 1/2
+      - y = f((1/2)x): x_mult = 2
+    If y = f(-x): x_negate = True
+
+    Notes:
+    - This helper changes x only (horizontal transforms). y stays the same.
+    """
+    for x, y in points:
+        xn = -x if x_negate else x
+        yn = -y if y_negate else y
+        out.append((xn * x_mult, yn * y_mult))
+    return out
+
+
+def plot_polyline(
+    points,
+    *,
+    equation: str | None = None,
+    marker: str = "o",
+    color: str = PRIMARY_LINE_COLOR,
+    latex_title: bool = True,
+    display_latex: bool = False,
+    latex_loc: str = "tl",
+    latex_pad: float = 0.02,
+    latex_fontsize: int = 13,
+    xlim: tuple[float, float] | None = (-5, 5),
+    ylim: tuple[float, float] | None = (-5, 5),
+) -> None:
+    x, y = zip(*points)
+
+    plt.figure(figsize=(6.5, 6.5))
+    ax = plt.gca()
+
+    # ---- Axes through origin ----
+    ax.axhline(0, color=AXIS_COLOR, linewidth=1.6, zorder=0)
+    ax.axvline(0, color=AXIS_COLOR, linewidth=1.6, zorder=0)
+
+    # ---- Plot ----
+    ax.plot(x, y, marker=marker, color=color, linewidth=2.2)
+
+    # ---- Aspect ----
+    ax.set_aspect("equal", adjustable="box")
+
+    # ---- FIXED WINDOW (same size every time) ----
+    if xlim is not None:
+        ax.set_xlim(xlim)
+    if ylim is not None:
+        ax.set_ylim(ylim)
+
+    # ---- LaTeX logic: exactly ONE output path ----
+    if equation:
+        if display_latex:
+            # Notebook LaTeX ABOVE the plot output (your preferred look)
+            try:
+                from IPython.display import display, Math
+                display(Math(equation))  # preserves parentheses exactly
+            except ImportError:
+                pass
+
+        else:
+            # Put label INSIDE the plot at top-left (not a centered title)
+            if latex_title:
+                latex = label_latex(equation)  # lightweight, keeps f(x)
+                loc_map = {
+                    "tl": (latex_pad, 1 - latex_pad, "left", "top"),
+                    "tr": (1 - latex_pad, 1 - latex_pad, "right", "top"),
+                    "bl": (latex_pad, latex_pad, "left", "bottom"),
+                    "br": (1 - latex_pad, latex_pad, "right", "bottom"),
+                }
+                if latex_loc not in loc_map:
+                    raise ValueError("latex_loc must be one of: 'tl', 'tr', 'bl', 'br'")
+
+                xx, yy, ha, va = loc_map[latex_loc]
+                ax.text(
+                    xx, yy, rf"${latex}$",
+                    transform=ax.transAxes,
+                    ha=ha, va=va,
+                    fontsize=latex_fontsize,
+                )
+            else:
+                # Plain text label, same placement
+                ax.text(
+                    latex_pad, 1 - latex_pad, equation,
+                    transform=ax.transAxes,
+                    ha="left", va="top",
+                    fontsize=latex_fontsize,
+                )
+
+    ax.set_xticks(np.arange(xlim[0], xlim[1] + 0.5, 0.5), minor=True)
+    ax.set_yticks(np.arange(ylim[0], ylim[1] + 0.5, 0.5), minor=True)
+    ax.grid(True, which="minor", linestyle="--", linewidth=0.4, alpha=0.4)
+    plt.show()
+
+
+
+
+
