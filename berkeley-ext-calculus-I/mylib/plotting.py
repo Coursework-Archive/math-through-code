@@ -52,6 +52,22 @@ def equation_latex(equation: str) -> str:
 #     return f"{sp.latex(lhs)} = {sp.latex(rhs)}"
 
 
+def display_latex(latex: str) -> None:
+    """
+    Display raw LaTeX in a Jupyter notebook (no parsing).
+    The string should NOT include surrounding $...$.
+    """
+    try:
+        from IPython.display import display, Math
+    except ImportError as e:
+        raise RuntimeError(
+            "display_equation() requires a Jupyter/IPython environment."
+        ) from e
+
+    display(Math(latex))
+
+
+
 def display_equation(equation: str) -> None:
     """
     Display the equation as LaTeX in a Jupyter notebook.
@@ -320,15 +336,18 @@ def plot_equation(
 
 
 def plot_data_points(
-    x: Sequence[float],
-    y: Sequence[float],
+    x, y,
     *,
-    connect: bool = True,
-    marker: str = "o",
-    title: str | None = None,
-    xlabel: str = "x",
-    ylabel: str = "y",
-    show_grid: bool = True,
+    connect=True,
+    marker="o",
+    title=None,
+    xlabel="x",
+    ylabel="y",
+    show_grid=True,
+    tangent=False,
+    tangent_x0=None,
+    tangent_y0=None,
+    tangent_slope=None,
 ) -> None:
     """
     Plot discrete data points, optionally connected by line segments.
@@ -352,9 +371,54 @@ def plot_data_points(
         raise ValueError("x and y must have the same length")
 
     if connect:
-        plt.plot(x, y, marker=marker)
+        (line,) = plt.plot(x, y, marker=marker, color="black", label="s(t)")
+
     else:
         plt.scatter(x, y)
+
+    if tangent:
+        tangent_color = "red"
+
+        xt = [tangent_x0 - 1, tangent_x0 + 1]
+        yt = [tangent_y0 + tangent_slope * (x - tangent_x0) for x in xt]
+
+        # tangent line
+        plt.plot(
+            xt,
+            yt,
+            linestyle="--",
+            color=tangent_color,
+            linewidth=2,
+            label="Tangent line"
+        )
+
+        # tangent points
+        plt.scatter(
+            xt,
+            yt,
+            color=tangent_color,
+            s=70,
+            zorder=5
+        )
+
+        # labels for tangent points
+        for xi, yi in zip(xt, yt):
+            # Put the left point label BELOW the line, right point label ABOVE the line
+            dx, dy = (8, -14) if xi < tangent_x0 else (8, 8)
+
+            plt.annotate(
+                f"({xi:.1f}, {yi:.1f})",
+                xy=(xi, yi),
+                xytext=(dx, dy),
+                textcoords="offset points",
+                color=tangent_color,
+                fontsize=9,
+                ha="left",
+                va="bottom" if dy > 0 else "top",
+                zorder=6,
+                bbox=dict(boxstyle="round,pad=0.2", fc="black", ec="none", alpha=0.6),
+            )
+
 
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
@@ -472,6 +536,284 @@ def plot_polyline(
     ax.grid(True, which="minor", linestyle="--", linewidth=0.4, alpha=0.4)
     plt.show()
 
+
+
+
+
+Interval = Tuple[float, float, bool, bool]
+# (x_start, x_end, left_closed, right_closed)
+def plot_piecewise(
+    pieces: Iterable[tuple[sp.Expr, Interval]],
+    *,
+    var: sp.Symbol = sp.symbols("x"),
+    num: int = 400,
+    xlim: tuple[float, float] | None = None,
+    ylim: tuple[float, float] | None = None,
+    title: str | None = None,
+    style_origin: bool = False,
+    vertical_asymptotes: list[float] | None = None,
+    horizontal_asymptotes: list[float] | None = None,
+    defined_points: list[tuple[float, float]] | None = None,
+    open_points: list[tuple[float, float]] | None = None,
+    emphasized_open_points: list[tuple[float, float]] | None = None
+) -> None:
+    """
+    Plot a piecewise-defined function.
+
+    pieces:
+        Iterable of (expression, interval)
+        interval = (x_start, x_end, left_closed, right_closed)
+
+    Example interval:
+        (-2, 1, True, False)  ->  [-2, 1)
+    """
+
+    plt.figure(figsize=(6.5, 6.5))
+    ax = plt.gca()
+
+    # (Optional) keep these if you like; style_origin will visually replace them anyway
+    if not style_origin:
+        ax.axhline(0, linewidth=1.4)
+        ax.axvline(0, linewidth=1.4)
+
+    drawn_open_points = set()
+    for expr, (a, b, left_closed, right_closed) in pieces:
+        f = sp.lambdify(var, expr, "numpy")
+        dx = (b - a) / max(num - 1, 1)
+        a_in = a + dx
+        b_in = b - dx
+
+        if a_in >= b_in:
+            a_in = a
+            b_in = b
+
+        xs = np.linspace(a_in, b_in, num)
+
+        with np.errstate(all="ignore"):
+            ys = f(xs)
+
+        ys = np.asarray(ys, dtype=float)
+        mask = np.isfinite(ys)
+
+        ax.plot(xs[mask], ys[mask], color="black", linewidth=2)
+
+        # Endpoints (only evaluate if we will plot them)
+        # left endpoint marker
+        if left_closed:
+            with np.errstate(all="ignore"):
+                ya = f(a)
+            if np.isfinite(ya):
+                ax.plot(a, ya, "o", color="black")
+
+        # right endpoint marker
+        if right_closed:
+            with np.errstate(all="ignore"):
+                yb = f(b)
+            if np.isfinite(yb):
+                ax.plot(b, yb, "o", color="black")
+
+    if title:
+        ax.set_title(title)
+
+    # ---- Final plot formatting (limits, aspect, ticks, grid) ----
+    if xlim is None:
+        xlim = (-5, 5)
+    if ylim is None:
+        ylim = (-5, 5)
+
+    ax.set_aspect("equal", adjustable="box")
+
+    # If you want axes through origin with arrows, do it FIRST (it sets limits/spines)
+    if style_origin:
+        style_axes_origin_with_arrows(ax, xlim, ylim, grid=False)
+    else:
+        ax.set_xlim(*xlim)
+        ax.set_ylim(*ylim)
+
+    # ---- Explicit points ----
+    if open_points:
+        for x0, y0 in open_points:
+            ax.plot(x0, y0, "o",
+                    markerfacecolor="white",
+                    markeredgecolor="black",
+                    markersize=8,
+                    zorder=6)
+
+    # emphasized open holes (shared endpoints)
+    if emphasized_open_points:
+        for x0, y0 in emphasized_open_points:
+            ax.plot(x0, y0, "o",
+                    markerfacecolor="white",
+                    markeredgecolor="black",
+                    markeredgewidth=2,
+                    markersize=14,
+                    zorder=6)
+
+    if defined_points:
+        for x0, y0 in defined_points:
+            ax.plot(x0, y0, marker="o", markersize=6,
+                    color="black", zorder=7)
+
+    # ---- Major + minor ticks (smaller grid sections) ----
+    ax.set_xticks(np.arange(xlim[0], xlim[1] + 1, 1))  # major: 1
+    ax.set_xticks(np.arange(xlim[0], xlim[1] + 0.5, 0.5), minor=True)  # minor: 0.5
+    ax.set_yticks(np.arange(ylim[0], ylim[1] + 1, 1))  # major: 1
+    ax.set_yticks(np.arange(ylim[0], ylim[1] + 0.5, 0.5), minor=True)  # minor: 0.5
+
+    # ---- Grid styling ----
+    ax.grid(True, which="major", linewidth=0.8, alpha=0.35)
+    ax.grid(True, which="minor", linewidth=0.4, alpha=0.20)
+
+    # ---- Asymptotes ----
+    if vertical_asymptotes:
+        for x0 in vertical_asymptotes:
+            ax.axvline(x0, linestyle="--", linewidth=1.4, color="gray")
+            ax.text(
+                x0 + 0.03 * (xlim[1] - xlim[0]),
+                ylim[1] - 0.08 * (ylim[1] - ylim[0]),
+                rf"$x={x0}$",
+                color="gray",
+                ha="left",
+                va="top",
+            )
+
+    if horizontal_asymptotes:
+        for y0 in horizontal_asymptotes:
+            ax.axhline(y0, linestyle="--", linewidth=1.4, color="gray")
+            ax.text(
+                xlim[0] + 0.03 * (xlim[1] - xlim[0]),
+                y0 + 0.03 * (ylim[1] - ylim[0]),
+                rf"$y={y0}$",
+                color="gray",
+                ha="left",
+                va="bottom",
+            )
+
+    plt.show()
+
+
+def style_axes_origin_with_arrows(ax, xlim, ylim, *, grid=True):
+    # Limits first
+    ax.set_xlim(*xlim)
+    ax.set_ylim(*ylim)
+
+    # Put axes (spines) through the origin so tick labels sit ON the axes
+    ax.spines["left"].set_position(("data", 0))
+    ax.spines["bottom"].set_position(("data", 0))
+    ax.spines["right"].set_color("none")
+    ax.spines["top"].set_color("none")
+
+    # Make spines visible and black
+    ax.spines["left"].set_color("black")
+    ax.spines["bottom"].set_color("black")
+    ax.spines["left"].set_linewidth(1.6)
+    ax.spines["bottom"].set_linewidth(1.6)
+
+    # Ticks only on these axes
+    ax.xaxis.set_ticks_position("bottom")
+    ax.yaxis.set_ticks_position("left")
+
+    # Ensure tick labels show
+    ax.tick_params(axis="both", which="both", colors="black", labelsize=10)
+
+    # Grid lines
+    if grid:
+        ax.grid(True, alpha=0.25, linewidth=1)
+
+    # Arrowheads on +x and +y ends (and optionally -x/-y)
+    xr = xlim[1] - xlim[0]
+    yr = ylim[1] - ylim[0]
+
+    # +x arrow
+    ax.annotate(
+        "", xy=(xlim[1], 0), xytext=(xlim[1] - 0.06 * xr, 0),
+        arrowprops=dict(arrowstyle="->", color="black", lw=1.6),
+        clip_on=False,
+    )
+    # +y arrow
+    ax.annotate(
+        "", xy=(0, ylim[1]), xytext=(0, ylim[1] - 0.06 * yr),
+        arrowprops=dict(arrowstyle="->", color="black", lw=1.6),
+        clip_on=False,
+    )
+
+    # Axis labels near arrowheads
+    ax.text(xlim[1] - 0.08 * xr, 0 + 0.04 * yr, "x", color="black")
+    ax.text(0 + 0.04 * xr, ylim[1] - 0.10 * yr, "y", color="black")
+
+
+def epsilon_delta_plot(
+    f,
+    a,
+    L,
+    eps=0.5,
+    delta=0.5,
+    xlim=(-5, 5),
+    ylim=(-10, 10),
+    title="",
+):
+    xs = np.linspace(*xlim, 1200)
+    ys = f(xs)
+
+    fig = plt.figure(figsize=(6, 6))
+    ax = plt.gca()
+
+    # ---- Function (black) ----
+    ax.plot(xs, ys, color="black", linewidth=2)
+
+    # ---- Axes through origin (black) ----
+    style_axes_origin_with_arrows(ax, xlim, ylim, grid=True)
+
+    # ---- ε lines (red), from y-axis to intersection with graph ----
+    for y_target in (L + eps, L - eps):
+        idx = np.argmin(np.abs(ys - y_target))
+        x_hit = xs[idx]
+        ax.plot([0, x_hit], [y_target, y_target],
+                color="red", linestyle="--", linewidth=1.6)
+
+    # ---- δ lines (red), from x-axis to graph at x=a±δ ----
+    for x_delta in (a - delta, a + delta):
+        y_hit = f(x_delta)
+        ax.plot([x_delta, x_delta], [0, y_hit],
+                color="red", linestyle="--", linewidth=1.6)
+
+    # ---- Limits / grid ----
+    ax.set_xlim(*xlim)
+    ax.set_ylim(*ylim)
+    ax.grid(False)
+
+    # ---- Ensure x ticks include a-δ, a, a+δ (tick locations won't "move"; we just include them) ----
+    base_ticks = list(ax.get_xticks())
+    special = [a - delta, a, a + delta]
+    xticks = sorted(set([*base_ticks, *special]))
+    ax.set_xticks(xticks)
+
+    # ---- δ labels ABOVE the x-axis AND staggered so they don’t overlap ----
+    y0 = 0.0
+    y_range = (ylim[1] - ylim[0])
+    y_text = y0 + 0.03 * y_range      # above the x-axis line
+
+    x_range = (xlim[1] - xlim[0])
+    x_stagger = 0.03 * x_range        # horizontal stagger amount
+
+    # Stagger left/center/right labels slightly
+    ax.text(a - delta - x_stagger, y_text, "a − δ", ha="center", va="bottom", color="red")
+    ax.text(a,                 y_text, "a",     ha="center", va="bottom", color="red")
+    ax.text(a + delta + x_stagger, y_text, "a + δ", ha="center", va="bottom", color="red")
+
+    # ---- ε labels (red) ----
+    ax.text(xlim[0] + 0.02*x_range, L + eps, "L + ε", va="bottom", color="red")
+    ax.text(xlim[0] + 0.02*x_range, L - eps, "L − ε", va="top", color="red")
+
+    # ---- Axis labels “x” and “y” (like textbook) ----
+    ax.text(xlim[1] - 0.05*x_range, 0 + 0.02*y_range, "x", color="black")
+    ax.text(0 + 0.02*x_range, ylim[1] - 0.05*y_range, "y", color="black")
+
+    # ---- Title ----
+    if title:
+        ax.set_title(title)
+
+    plt.show()
 
 
 
