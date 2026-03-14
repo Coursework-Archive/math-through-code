@@ -1,36 +1,39 @@
-#!/usr/bin/env python3
+# tools/export_np.py
 """
 Sanitize a .ipynb (remove non-nbformat keys like 'jetTransient')
-and export to HTML with no input, preserving the original base filename.
+and export to PDF with no input, preserving the original base filename.
 
 Usage:
-  python export_nb.py path/to/notebook.ipynb
+  python tools/export_nb.py path/to/notebook.ipynb
+  python tools/export_nb.py path/to/notebook.ipynb --author "Your Name"
+  python tools/export_nb.py path/to/notebook.ipynb --date "February 8, 2026"
 """
 
 from __future__ import annotations
 
 import argparse
 import os
-import re
 import subprocess
 import sys
 import tempfile
 from copy import deepcopy
-
+from datetime import datetime
+from nbformat.v4 import new_markdown_cell
 import nbformat
 
+BAD_KEYS_IN_OUTPUTS = {"jetTransient"}
+BAD_KEYS_IN_CELL: set[str] = set()
 
-BAD_KEYS_IN_OUTPUTS = {
-    "jetTransient",
-}
 
-BAD_KEYS_IN_CELL = set()
+def format_today():
+    return datetime.now().strftime("%B %d, %Y").replace(" 0", " ")
 
 
 def sanitize_notebook(nb: nbformat.NotebookNode) -> nbformat.NotebookNode:
     nb2 = deepcopy(nb)
 
     for cell in nb2.get("cells", []):
+        # Remove any unwanted top-level cell keys (currently none)
         for k in list(cell.keys()):
             if k in BAD_KEYS_IN_CELL:
                 cell.pop(k, None)
@@ -39,10 +42,12 @@ def sanitize_notebook(nb: nbformat.NotebookNode) -> nbformat.NotebookNode:
         if isinstance(outputs, list):
             for out in outputs:
                 if isinstance(out, dict):
+                    # Remove bad keys directly on output dict
                     for k in list(out.keys()):
                         if k in BAD_KEYS_IN_OUTPUTS:
                             out.pop(k, None)
 
+                    # Remove bad keys in output metadata dict
                     md = out.get("metadata")
                     if isinstance(md, dict):
                         md.pop("jetTransient", None)
@@ -50,10 +55,31 @@ def sanitize_notebook(nb: nbformat.NotebookNode) -> nbformat.NotebookNode:
     return nb2
 
 
-def run_nbconvert(clean_ipynb: str, output_dir: str, output_basename: str) -> None:
+def append_disclaimer(nb):
+    disclaimer = r"""
+\vfill
+
+---
+
+\begin{center}
+\small
+ChatGPT was used for Markdown and \LaTeX\ formatting assistance.  
+All mathematical reasoning, derivations, and conclusions are my own work and were independently checked for correctness.
+\end{center}
+"""
+    nb.cells.append(new_markdown_cell(disclaimer))
+
+def title_from_filename(base_name: str) -> str:
     """
-    output_basename should be the filename WITHOUT extension.
-    nbconvert will write output_basename.html into output_dir.
+    Convert 'module_2_assignments' -> 'Module 2 Assignments'
+    """
+    words = base_name.replace("_", " ").split()
+    return " ".join(w if w.isdigit() else w.capitalize() for w in words)
+
+
+def run_nbconvert_pdf(clean_ipynb: str, output_dir: str, output_basename: str) -> None:
+    """
+    nbconvert writes output_basename.pdf into output_dir.
     """
     cmd = [
         sys.executable,
@@ -61,7 +87,7 @@ def run_nbconvert(clean_ipynb: str, output_dir: str, output_basename: str) -> No
         "jupyter",
         "nbconvert",
         "--to",
-        "html",
+        "pdf",
         "--no-input",
         "--output-dir",
         output_dir,
@@ -72,25 +98,19 @@ def run_nbconvert(clean_ipynb: str, output_dir: str, output_basename: str) -> No
     subprocess.run(cmd, check=True)
 
 
-def fix_html_title(html_path: str, title: str) -> None:
-    with open(html_path, "r", encoding="utf-8") as f:
-        s = f.read()
-
-    s = re.sub(
-        r"<title>.*?</title>",
-        f"<title>{title}</title>",
-        s,
-        count=1,
-        flags=re.DOTALL,
-    )
-
-    with open(html_path, "w", encoding="utf-8") as f:
-        f.write(s)
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("notebook", help="Path to .ipynb")
+    parser.add_argument(
+        "--author",
+        default="Brittany L. Bales",
+        help="Author name to store in notebook metadata (default: Brittany L. Bales)",
+    )
+    parser.add_argument(
+        "--date",
+        default=None,
+        help="Date string to store in notebook metadata (default: today's date). Example: 'February 8, 2026'",
+    )
     args = parser.parse_args()
 
     ipynb_path = os.path.abspath(args.notebook)
@@ -101,23 +121,28 @@ def main() -> int:
     nb = nbformat.read(ipynb_path, as_version=4)
     nb_clean = sanitize_notebook(nb)
 
+    append_disclaimer(nb_clean)
+
     output_dir = os.path.dirname(ipynb_path)
     base_name = os.path.splitext(os.path.basename(ipynb_path))[0]
 
-    # Helps nbconvert pick a sensible title in some setups
-    nb_clean.metadata["name"] = base_name
+    # Derived title + date
+    title = title_from_filename(base_name)
+    datestr = args.date if args.date else format_today()
+    author = args.author
 
-    with tempfile.NamedTemporaryFile(mode="w", suffix=".ipynb", delete=False, encoding="utf-8") as tmp:
-        nbformat.write(nb_clean, tmp.name)
-        temp_ipynb = tmp.name
+    # Metadata (harmless even if your template doesn't use it)
+    nb_clean.metadata["title"] = title
+    nb_clean.metadata["authors"] = [{"name": author}]
+    nb_clean.metadata["date"] = datestr
+    nb_clean.metadata["name"] = base_name  # important: helps avoid tmpxxxxx naming
 
-    try:
-        run_nbconvert(temp_ipynb, output_dir, base_name)
+    # Write sanitized notebook to a temp folder but keep the *real* base filename
+    with tempfile.TemporaryDirectory() as td:
+        temp_ipynb = os.path.join(td, base_name + ".ipynb")
+        nbformat.write(nb_clean, temp_ipynb)
 
-        html_path = os.path.join(output_dir, base_name + ".html")
-        fix_html_title(html_path, base_name)
-    finally:
-        os.remove(temp_ipynb)
+        run_nbconvert_pdf(temp_ipynb, output_dir, base_name)
 
     return 0
 

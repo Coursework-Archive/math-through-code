@@ -120,3 +120,191 @@ In particular, I incorrectly reflected `-√x` across the **y-axis**, when it sh
 
 **Lesson:**  
 Always separate *reflection*, *domain change*, and *vertical shift* into distinct steps instead of combining them mentally.
+
+
+## Transformation Mistake Log – Reflections vs Scaling
+
+### Original Mistake
+
+I initially confused:
+
+- \( y = -f(x) \)
+- \( y = 3f(x) \)
+
+I treated them as horizontal changes instead of vertical changes.
+
+---
+
+### Correct Understanding
+
+#### 1. Outside Changes Affect **y-values**
+
+If the modification is **outside** the function:
+
+\[
+y = a f(x)
+\]
+
+then it changes the **vertical behavior**.
+
+- \( y = -f(x) \) → Reflection across the **x-axis**
+- \( y = 3f(x) \) → Vertical stretch by factor of 3
+- \( y = \frac{1}{3} f(x) \) → Vertical compression by factor of \( \frac{1}{3} \)
+
+Key idea:
+> Multiplication outside affects y-values (stretch/compress/reflect).
+
+---
+
+#### 2. Inside Changes Affect **x-values**
+
+If the modification is **inside** the function:
+
+\[
+y = f(x - c)
+\quad \text{or} \quad
+y = f(-x)
+\]
+
+then it changes the **horizontal behavior**.
+
+- \( y = f(x - 3) \) → Shift right 3
+- \( y = f(x + 3) \) → Shift left 3
+- \( y = f(-x) \) → Reflection across the **y-axis**
+
+Key idea:
+> Inside parentheses affects x-values (left/right/reflect over y-axis).
+
+---
+
+### Final Mental Rule
+
+- **Addition/Subtraction outside** → vertical shift  
+- **Multiplication outside** → vertical stretch/compression/reflection  
+- **Addition/Subtraction inside** → horizontal shift (opposite direction)  
+- **Negative inside** → reflect across y-axis  
+
+This mistake reminded me to always ask:
+
+> Is the change happening to x or to the entire function value?
+
+
+3. Mixing up “function value” vs “limit”
+What happened
+At points like x=2 or x=4, you briefly treated:
+
+
+f(a)
+
+
+\lim_{x\to a} f(x)
+
+ as interchangeable.
+
+
+Correction
+f(a) = the filled dot
+
+
+\lim_{x\to a} f(x) = what the graph approaches
+
+
+You explicitly stated this correctly later — the mistake was momentary.
+1. Swapping left-hand and right-hand limits
+What happened
+You initially interpreted “approaching from the left/right” backward in the drug-injection problem.
+
+
+You thought the increase happened on the left of t=12.
+
+
+Correction
+Left-hand limit (t \to 12^-) = just before the injection
+
+
+Right-hand limit (t \to 12^+) = immediately after the injection
+
+
+Why this happens
+You were reasoning physically (which is good), but momentarily forgot that:
+
+
+“+” means larger t values
+
+
+“-” means smaller t values
+
+
+This is a notation slip, not a conceptual failure.
+
+
+# Mistake Log — Fraction Division Error (Exponential Functions)
+
+## Problem Context
+Solving for parameters in:
+f(x) = C b^x
+
+Points given:
+(-1, 3) and (1, 4/3)
+
+While eliminating C, I divided:
+
+(4/3) ÷ 3
+
+and incorrectly simplified it to 4 instead of 4/9.
+
+---
+
+## What Went Wrong
+
+I divided a fraction by an integer without explicitly rewriting it as multiplication by the reciprocal.
+
+Incorrect mental step:
+(4/3) ÷ 3  → treated as if the 3 canceled improperly.
+
+Correct rule:
+(a/b) ÷ c = (a/b) · (1/c)
+
+So:
+(4/3) ÷ 3 = (4/3) · (1/3) = 4/9
+
+---
+
+## Structural Reminder
+
+When solving:
+3 = C b^{-1}
+4/3 = C b
+
+Dividing gives:
+
+(4/3) / 3 = b^2
+
+Left side must be handled carefully:
+
+(4/3) / 3 = 4/9
+
+So:
+b^2 = 4/9
+b = 2/3
+
+---
+
+## Conceptual Safety Check
+
+The graph was decreasing.
+
+Therefore:
+0 < b < 1
+
+If I ever get b > 1 for a decreasing exponential,
+that is a red flag to re-check arithmetic.
+
+---
+
+## Correction Rule Going Forward
+
+Always rewrite division as multiplication by the reciprocal before simplifying.
+
+Never simplify fractions mentally when eliminating parameters.
+Write the reciprocal explicitly.

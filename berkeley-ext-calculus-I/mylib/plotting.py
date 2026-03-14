@@ -107,6 +107,26 @@ def label_latex(equation: str) -> str:
     return s
 
 
+def set_pi_ticks(ax):
+    ticks = np.array([
+        -np.pi,
+        -np.pi/2,
+        0,
+        np.pi/2,
+        np.pi
+    ])
+
+    labels = [
+        r"$-\pi$",
+        r"$-\frac{\pi}{2}$",
+        r"$0$",
+        r"$\frac{\pi}{2}$",
+        r"$\pi$"
+    ]
+
+    ax.set_xticks(ticks)
+    ax.set_xticklabels(labels)
+
 
 def _parse_equation_to_expr(
     equation: str,
@@ -555,7 +575,8 @@ def plot_piecewise(
     horizontal_asymptotes: list[float] | None = None,
     defined_points: list[tuple[float, float]] | None = None,
     open_points: list[tuple[float, float]] | None = None,
-    emphasized_open_points: list[tuple[float, float]] | None = None
+    emphasized_open_points: list[tuple[float, float]] | None = None,
+    labeled_points: list[tuple[float, float, str]] | None = None
 ) -> None:
     """
     Plot a piecewise-defined function.
@@ -593,6 +614,9 @@ def plot_piecewise(
             ys = f(xs)
 
         ys = np.asarray(ys, dtype=float)
+        # If lambdify returned a scalar (e.g., constant function), broadcast to xs
+        if ys.shape == ():
+            ys = np.full_like(xs, ys, dtype=float)
         mask = np.isfinite(ys)
 
         ax.plot(xs[mask], ys[mask], color="black", linewidth=2)
@@ -621,7 +645,7 @@ def plot_piecewise(
     if ylim is None:
         ylim = (-5, 5)
 
-    ax.set_aspect("equal", adjustable="box")
+    ax.set_aspect("auto")
 
     # If you want axes through origin with arrows, do it FIRST (it sets limits/spines)
     if style_origin:
@@ -654,15 +678,77 @@ def plot_piecewise(
             ax.plot(x0, y0, marker="o", markersize=6,
                     color="black", zorder=7)
 
+    # ---- Labeled points (LaTeX support) ----
+    if labeled_points:
+        for x0, y0, label in labeled_points:
+            ax.plot(x0, y0, marker="o", markersize=6,
+                    color="black", zorder=8)
+
+            dx = 0.05 * (xlim[1] - xlim[0])
+            dy = 0.05 * (ylim[1] - ylim[0])
+
+            # If point is on left side, shift left
+            if x0 < 0:
+                x_text = x0 - dx
+                ha_align = 'right'
+            else:
+                x_text = x0 + dx
+                ha_align = 'left'
+
+            ax.text(
+                x_text,
+                y0 - dy,
+                rf"${label}$",
+                fontsize=8,
+                ha=ha_align,
+                va='top'
+            )
+
     # ---- Major + minor ticks (smaller grid sections) ----
-    ax.set_xticks(np.arange(xlim[0], xlim[1] + 1, 1))  # major: 1
-    ax.set_xticks(np.arange(xlim[0], xlim[1] + 0.5, 0.5), minor=True)  # minor: 0.5
-    ax.set_yticks(np.arange(ylim[0], ylim[1] + 1, 1))  # major: 1
-    ax.set_yticks(np.arange(ylim[0], ylim[1] + 0.5, 0.5), minor=True)  # minor: 0.5
+    is_trig = np.isclose(xlim[1] - xlim[0], 2 * np.pi, atol=1e-2)
+
+    if not is_trig:
+        x_span = xlim[1] - xlim[0]
+        y_span = ylim[1] - ylim[0]
+
+        # Adaptive major spacing
+        if x_span > 8:
+            x_major = 1
+        elif x_span > 3:
+            x_major = 0.5
+        else:
+            x_major = 0.1
+
+        if y_span > 20:
+            y_major = 5
+        elif y_span > 8:
+            y_major = 1
+        else:
+            y_major = y_span / 6
+
+        # Only for big-number graphs: ensure labels aren't too dense / weird
+        if ylim[0] >= 1000:
+            y_major = max(y_major, 50)
+
+        ax.set_xticks(np.arange(xlim[0], xlim[1] + x_major, x_major))
+        ax.set_yticks(np.arange(ylim[0], ylim[1] + y_major, y_major))
+
+        ax.set_xticks(np.arange(xlim[0], xlim[1] + x_major / 2, x_major / 2), minor=True)
+        ax.set_yticks(np.arange(ylim[0], ylim[1] + y_major / 2, y_major / 2), minor=True)
+
+    else:
+        # keep π ticks that were set in style_axes_origin_with_arrows
+        ax.set_xticks([], minor=True)
+        # (optional) you can still set y ticks adaptively if you want, but not required
+
 
     # ---- Grid styling ----
     ax.grid(True, which="major", linewidth=0.8, alpha=0.35)
     ax.grid(True, which="minor", linewidth=0.4, alpha=0.20)
+
+    x_span = xlim[1] - xlim[0]
+    if x_span <= 2:
+        ax.grid(False, which="minor")  # keep minor ticks, hide minor grid
 
     # ---- Asymptotes ----
     if vertical_asymptotes:
@@ -696,6 +782,28 @@ def style_axes_origin_with_arrows(ax, xlim, ylim, *, grid=True):
     # Limits first
     ax.set_xlim(*xlim)
     ax.set_ylim(*ylim)
+
+    # --- Special π tick formatting if domain is trig-like ---
+    if np.isclose(xlim[1] - xlim[0], 2*np.pi, atol=1e-2):
+        ticks = np.array([
+            -np.pi,
+            -np.pi / 2,
+            0,
+            np.pi / 2,
+            np.pi
+        ])
+
+        labels = [
+            r"$-\pi$",
+            r"$-\frac{\pi}{2}$",
+            r"$0$",
+            r"$\frac{\pi}{2}$",
+            r"$\pi$"
+        ]
+
+        ax.set_xticks(ticks)
+        ax.set_xticklabels(labels)
+
 
     # Put axes (spines) through the origin so tick labels sit ON the axes
     ax.spines["left"].set_position(("data", 0))
