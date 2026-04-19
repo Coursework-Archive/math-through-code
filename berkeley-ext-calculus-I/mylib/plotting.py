@@ -712,12 +712,12 @@ def plot_piecewise(
         y_span = ylim[1] - ylim[0]
 
         # Adaptive major spacing
-        if x_span > 8:
-            x_major = 1
-        elif x_span > 3:
-            x_major = 0.5
-        else:
-            x_major = 0.1
+        if x_span > 100:
+            x_major = 20
+        elif x_span > 50:
+            x_major = 10
+        elif x_span > 20:
+            x_major = 5
 
         if y_span > 20:
             y_major = 5

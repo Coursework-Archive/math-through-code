@@ -121,7 +121,7 @@ def main() -> int:
     nb = nbformat.read(ipynb_path, as_version=4)
     nb_clean = sanitize_notebook(nb)
 
-    append_disclaimer(nb_clean)
+    # append_disclaimer(nb_clean)
 
     output_dir = os.path.dirname(ipynb_path)
     base_name = os.path.splitext(os.path.basename(ipynb_path))[0]
