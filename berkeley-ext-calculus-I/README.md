@@ -28,12 +28,12 @@ This document tracks all official **Math X11 (Calculus I)** assignments and exam
 | Module 5 | Math X11 – Module 5 | ✅ Completed |
 | Module 6 | Math X11 – Module 6 | ✅ Completed |
 | **Midterm Exam** | **Math X11 – Midterm Exam** | ✅ Completed |
-| Module 7 | Math X11 – Module 7 | ⬜ Not Started |
-| Module 8 | Math X11 – Module 8 | ⬜ Not Started |
-| Module 9 | Math X11 – Module 9 | ⬜ Not Started |
-| Module 10 | Math X11 – Module 10 | ⬜ Not Started |
-| Module 11 | Math X11 – Module 11 | ⬜ Not Started |
-| Module 12 | Math X11 – Module 12 | ⬜ Not Started |
+| Module 7 | Math X11 – Module 7 |  ✅ Completed |
+| Module 8 | Math X11 – Module 8 |  ✅ Completed |
+| Module 9 | Math X11 – Module 9 |  ✅ Completed |
+| Module 10 | Math X11 – Module 10 |  ✅ Completed |
+| Module 11 | Math X11 – Module 11 |  ✅ Completed |
+| Module 12 | Math X11 – Module 12 |  ✅ Completed |
 | **Final Exam** | **Math X11 – Final Exam** | ⬜ Not Started |
 
 ---

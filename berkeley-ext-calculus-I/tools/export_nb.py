@@ -77,10 +77,8 @@ def title_from_filename(base_name: str) -> str:
     return " ".join(w if w.isdigit() else w.capitalize() for w in words)
 
 
+
 def run_nbconvert_pdf(clean_ipynb: str, output_dir: str, output_basename: str) -> None:
-    """
-    nbconvert writes output_basename.pdf into output_dir.
-    """
     cmd = [
         sys.executable,
         "-m",
@@ -88,6 +86,7 @@ def run_nbconvert_pdf(clean_ipynb: str, output_dir: str, output_basename: str) -
         "nbconvert",
         "--to",
         "pdf",
+        "--PDFExporter.latex_command=['xelatex','{filename}','-quiet']",
         "--no-input",
         "--output-dir",
         output_dir,
@@ -95,7 +94,20 @@ def run_nbconvert_pdf(clean_ipynb: str, output_dir: str, output_basename: str) -
         output_basename,
         clean_ipynb,
     ]
-    subprocess.run(cmd, check=True)
+
+    result = subprocess.run(
+        cmd,
+        text=True,
+        capture_output=True,
+    )
+
+    if result.stdout:
+        print(result.stdout)
+
+    if result.stderr:
+        print(result.stderr, file=sys.stderr)
+
+    result.check_returncode()
 
 
 def main() -> int:
@@ -121,7 +133,7 @@ def main() -> int:
     nb = nbformat.read(ipynb_path, as_version=4)
     nb_clean = sanitize_notebook(nb)
 
-    # append_disclaimer(nb_clean)
+    append_disclaimer(nb_clean)
 
     output_dir = os.path.dirname(ipynb_path)
     base_name = os.path.splitext(os.path.basename(ipynb_path))[0]
