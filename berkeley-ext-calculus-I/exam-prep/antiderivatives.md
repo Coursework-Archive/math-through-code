@@ -1,5 +1,21 @@
 # Antiderivatives Cheat Sheet
 
+Whenever $u$ contains
+
+- $\cos(\cdot)$
+- $\sin(\cdot)$
+- powers such as $(\cos x)^2$
+- exponentials such as $e^x$
+- logarithms
+
+pause and ask:
+
+> "Did I differentiate the whole inside, including constants and signs?"
+
+### Memory Cue
+
+**Choose $u$ → Differentiate completely → THEN substitute.**
+
 ## Basic Antiderivatives
 
 | Function $f(x)$ | Antiderivative $\int f(x)\,dx$ |

@@ -1,5 +1,16 @@
 # Section 1.5 — Inverse Functions and Logarithms
 
+## Power, Exponential, and Logarithmic Integrals
+
+| Integrand | Antiderivative |
+|---|---|
+| $x^n,\;n\neq -1$ | $\dfrac{x^{n+1}}{n+1}+C$ |
+| $e^x$ | $e^x+C$ |
+| $a^x$ | $\dfrac{a^x}{\ln a}+C$ |
+| $\dfrac1x$ | $\ln|x|+C$ |
+
+---
+
 ## Definition 3 — Inverse Function Relationship
 $$
 f^{-1}(x) = y \;\Longleftrightarrow\; f(y) = x

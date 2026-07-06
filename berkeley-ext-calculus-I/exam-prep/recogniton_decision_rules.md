@@ -129,3 +129,9 @@ Step 5: Solve for y′
 - Divide to isolate y′
 
 Step 6: Simplify (only if clean)
+
+| Pattern                 | Immediate Thought                            |
+| ----------------------- | -------------------------------------------- |
+| (\int_{-a}^{a} f(x),dx) | Check odd/even symmetry before integrating   |
+| Odd function            | Integral from (-a) to (a) equals (0)         |
+| Even function           | Integral from (-a) to (a) equals (2\int_0^a) |

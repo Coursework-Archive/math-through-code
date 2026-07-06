@@ -1,429 +1,331 @@
-# Calculus I Trigonometry Cheat Sheet
+# Calculus I Trigonometry Reference
 
----
+![Unit Circle](../reference/images/unit_circle.jpg)
+
 
 # Unit Circle (Key Angles)
 
-| Angle | $\sin\theta$ | $\cos\theta$ | $\tan\theta$ |
-|------|--------------|--------------|--------------|
+| $\theta$ | $\sin\theta$ | $\cos\theta$ | $\tan\theta$ |
+|---|---:|---:|---:|
 | $0$ | $0$ | $1$ | $0$ |
-| $\frac{\pi}{6}$ | $\frac{1}{2}$ | $\frac{\sqrt{3}}{2}$ | $\frac{1}{\sqrt{3}}$ |
-| $\frac{\pi}{4}$ | $\frac{\sqrt{2}}{2}$ | $\frac{\sqrt{2}}{2}$ | $1$ |
-| $\frac{\pi}{3}$ | $\frac{\sqrt{3}}{2}$ | $\frac{1}{2}$ | $\sqrt{3}$ |
+| $\frac{\pi}{6}$ | $\frac12$ | $\frac{\sqrt3}{2}$ | $\frac{\sqrt3}{3}$ |
+| $\frac{\pi}{4}$ | $\frac{\sqrt2}{2}$ | $\frac{\sqrt2}{2}$ | $1$ |
+| $\frac{\pi}{3}$ | $\frac{\sqrt3}{2}$ | $\frac12$ | $\sqrt3$ |
 | $\frac{\pi}{2}$ | $1$ | $0$ | undefined |
 | $\pi$ | $0$ | $-1$ | $0$ |
 
-
-![Unit Circle](../reference/images/unit_circle.jpg) ![geometry](../reference/images/geometry.1)
-![Unit Circle 1](../reference/images/unit_circle1.jpg)
-
----
-
-# Derivatives of Trigonometric Functions
+Point on the unit circle:
 
 $$
-\frac{d}{dx}(\sin x) = \cos x
-$$
-
-$$
-\frac{d}{dx}(\cos x) = -\sin x
-$$
-
-$$
-\frac{d}{dx}(\tan x) = \sec^2 x
-$$
-
-$$
-\frac{d}{dx}(\cot x) = -\csc^2 x
-$$
-
-$$
-\frac{d}{dx}(\sec x) = \sec x \tan x
-$$
-
-$$
-\frac{d}{dx}(\csc x) = -\csc x \cot x
+(x,y)=(\cos\theta,\sin\theta)
 $$
 
 ---
 
-### Pythagorean Identities (MOST IMPORTANT)
+# Derivatives
 
-sin²x + cos²x = 1
+## Trigonometric Derivatives
 
-1 + tan²x = sec²x   ← (used constantly)
+| Function | Derivative |
+|---|---|
+| $\sin x$ | $\cos x$ |
+| $\cos x$ | $-\sin x$ |
+| $\tan x$ | $\sec^2x$ |
+| $\cot x$ | $-\csc^2x$ |
+| $\sec x$ | $\sec x\tan x$ |
+| $\csc x$ | $-\csc x\cot x$ |
 
-1 + cot²x = csc²x
+---
+
+## Inverse Trigonometric Derivatives
+
+| Function | Derivative |
+|---|---|
+| $\arcsin x$ | $\dfrac{1}{\sqrt{1-x^2}}$ |
+| $\arccos x$ | $-\dfrac{1}{\sqrt{1-x^2}}$ |
+| $\arctan x$ | $\dfrac{1}{1+x^2}$ |
+
+---
+
+## Chain Rule Forms
+
+$$
+\frac{d}{dx}\left[\arcsin(u)\right]
+=
+\frac{u'}{\sqrt{1-u^2}}
+$$
+
+$$
+\frac{d}{dx}\left[\arccos(u)\right]
+=
+-\frac{u'}{\sqrt{1-u^2}}
+$$
+
+$$
+\frac{d}{dx}\left[\arctan(u)\right]
+=
+\frac{u'}{1+u^2}
+$$
+
+---
+
+# Antiderivatives
+
+## Trigonometric Antiderivatives
 
 
-### Rearranged Forms (you’ll use these a lot)
+| Integrand | Antiderivative |
+|---|---|
+| $\sin x$ | $-\cos x+C$ |
+| $\cos x$ | $\sin x+C$ |
+| $\tan x$ | $\ln\left(\sec x\right)+C$ |
+| $\cot x$ | $\ln\left(\sin x\right)+C$ |
+| $\sec^2x$ | $\tan x+C$ |
+| $\csc^2x$ | $-\cot x+C$ |
+| $\sec x\tan x$ | $\sec x+C$ |
+| $\csc x\cot x$ | $-\csc x+C$ |
+| $\sec x$ | $\ln\left(\sec x+\tan x\right)+C$ |
+| $\csc x$ | $\ln\left(\csc x-\cot x\right)+C$ |
 
-tan²x = sec²x − 1
+### Equivalent Forms
 
-sec²x − tan²x = 1
+$$
+\int\tan x\,dx
+=
+-\ln\left(\cos x\right)+C
+=
+\ln\left(\sec x\right)+C
+$$
 
-csc²x − cot²x = 1
+$$
+\int\cot x\,dx
+=
+\ln\left(\sin x\right)+C
+=
+-\ln\left(\csc x\right)+C
+$$
+
+$$
+\int\sec x\,dx
+=
+\ln\left|\sec x+\tan x\right|+C
+$$
+
+$$
+\int\csc x\,dx
+=
+\ln\left|\csc x-\cot x\right|+C
+=
+-\ln\left|\csc x+\cot x\right|+C
+$$
+
+---
+
+## Power Rule
+
+| Integrand | Antiderivative |
+|---|---|
+| $x^n,\;n\neq -1$ | $\dfrac{x^{n+1}}{n+1}+C$ |
+
+---
+
+## Exponential and Logarithmic Integrals
+
+| Integrand | Antiderivative |
+|---|--|
+| $e^x$ | $e^x+C$ |
+| $a^x$ | $\dfrac{a^x}{\ln a}+C$ |
+| $\dfrac1x$ | $\ln\lvert x\rvert+C$ |
+
+---
 
 # Inverse Trigonometric Functions
+
+## Principal Domains and Ranges
+
 | Function | Domain | Range |
-|----------|--------|-------|
-| $\arcsin x$ | $[-1,1]$ | $[-\frac{\pi}{2},\frac{\pi}{2}]$ |
+|---|---|---|
+| $\arcsin x$ | $[-1,1]$ | $\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$ |
 | $\arccos x$ | $[-1,1]$ | $[0,\pi]$ |
-| $\arctan x$ | $(-\infty,\infty)$ | $(-\frac{\pi}{2},\frac{\pi}{2})$ |
-| $\operatorname{arccot} x$ | $(-\infty,\infty)$ | $(0,\pi)$ |
-| $\operatorname{arcsec} x$ | $\lvert x \rvert \ge 1$ | $[0,\pi],\ y \ne \frac{\pi}{2}$ |
-| $\operatorname{arccsc} x$ | $\lvert x \rvert \ge 1$ | $[-\frac{\pi}{2},\frac{\pi}{2}],\ y \ne 0$ |
-
-# Trigonometric Functions from the Unit Circle
-
-On the unit circle, a point corresponding to an angle $\theta$ has coordinates
-
-$$
-(\cos\theta,\ \sin\theta)
-$$
-
-This means:
-
-- the **x-coordinate** equals $\cos\theta$
-- the **y-coordinate** equals $\sin\theta$
-
-From this point we can define all six trigonometric functions.
+| $\arctan x$ | $(-\infty,\infty)$ | $\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$ |
 
 ---
 
-# The Six Trigonometric Functions
+## Inverse Trig Process
 
-| Function | Definition | From the point $(x,y)$ |
-|--------|--------|--------|
-| $\sin\theta$ | opposite / hypotenuse | $y$ |
-| $\cos\theta$ | adjacent / hypotenuse | $x$ |
-| $\tan\theta$ | opposite / adjacent | $\frac{y}{x}$ |
-| $\cot\theta$ | adjacent / opposite | $\frac{x}{y}$ |
-| $\sec\theta$ | $1/\cos\theta$ | $\frac{1}{x}$ |
-| $\csc\theta$ | $1/\sin\theta$ | $\frac{1}{y}$ |
+1. Find the unit circle angle.
+2. Check the principal range.
+3. That angle is the answer.
 
 ---
 
-# Visual Interpretation
 
-If a point on the unit circle is
 
-$$
-(x,y) = (\cos\theta,\sin\theta)
-$$
 
-then
+# Trigonometric Definitions
 
-$$
-\tan\theta = \frac{\sin\theta}{\cos\theta} = \frac{y}{x}
-$$
+| Function | Ratio | Unit Circle |
+|---|---|---|
+| $\sin\theta$ | opposite/hypotenuse | $y$ |
+| $\cos\theta$ | adjacent/hypotenuse | $x$ |
+| $\tan\theta$ | $\dfrac{\sin\theta}{\cos\theta}$ | $\dfrac{y}{x}$ |
+| $\cot\theta$ | $\dfrac{\cos\theta}{\sin\theta}$ | $\dfrac{x}{y}$ |
+| $\sec\theta$ | $\dfrac1{\cos\theta}$ | $\dfrac1x$ |
+| $\csc\theta$ | $\dfrac1{\sin\theta}$ | $\dfrac1y$ |
 
-$$
-\sec\theta = \frac{1}{\cos\theta} = \frac{1}{x}
-$$
+---
 
-$$
-\csc\theta = \frac{1}{\sin\theta} = \frac{1}{y}
-$$
+# Trigonometric Identities
+
+## Reciprocal Identities
 
 $$
-\cot\theta = \frac{\cos\theta}{\sin\theta} = \frac{x}{y}
+\sec x=\frac1{\cos x}
+$$
+
+$$
+\csc x=\frac1{\sin x}
+$$
+
+$$
+\cot x=\frac1{\tan x}
+$$
+
+### Squared Reciprocal Identity
+
+$$
+\boxed{\sec^2x=\frac1{\cos^2x}}
 $$
 
 ---
 
-# Example
-
-For
+## Quotient Identities
 
 $$
-\theta = \frac{\pi}{6}
-$$
-
-the unit circle point is
-
-$$
-\left(\frac{\sqrt3}{2},\frac12\right)
-$$
-
-So
-
-$$
-\sin\left(\frac{\pi}{6}\right) = \frac12
+\tan x=\frac{\sin x}{\cos x}
 $$
 
 $$
-\cos\left(\frac{\pi}{6}\right) = \frac{\sqrt3}{2}
-$$
-
-$$
-\tan\left(\frac{\pi}{6}\right)
-=
-\frac{\frac12}{\frac{\sqrt3}{2}}
-=
-\frac{1}{\sqrt3}
-$$
-
-$$
-\sec\left(\frac{\pi}{6}\right)
-=
-\frac{1}{\frac{\sqrt3}{2}}
-=
-\frac{2}{\sqrt3}
-$$
-
-$$
-\csc\left(\frac{\pi}{6}\right)
-=
-\frac{1}{\frac12}
-=
-2
-$$
-
-$$
-\cot\left(\frac{\pi}{6}\right)
-=
-\frac{\frac{\sqrt3}{2}}{\frac12}
-=
-\sqrt3
+\cot x=\frac{\cos x}{\sin x}
 $$
 
 ---
 
-# Key Idea
-
-Everything comes from the unit circle point
+## Pythagorean Identities
 
 $$
-(\cos\theta,\sin\theta)
+\sin^2x+\cos^2x=1
 $$
 
-Once you know the coordinates, all six trig functions follow from simple ratios.
-
-
-
-
-# Meaning of Inverse Trigonometric Functions
-
-Inverse trig functions ask for an **angle**.
-
-Example:
-
 $$
-\sin^{-1}(x)
+1+\tan^2x=\sec^2x
 $$
 
-means:
-
-> What angle has sine equal to $x$?
-
-Example:
-
 $$
-\sin^{-1}\left(\frac{1}{2}\right)
+1+\cot^2x=\csc^2x
 $$
 
-We look for the unit circle angle where
+### Rearrangements
 
 $$
-\sin(\theta) = \frac{1}{2}
+\tan^2x=\sec^2x-1
 $$
 
-From the unit circle:
-
 $$
-\theta = \frac{\pi}{6}
+\cot^2x=\csc^2x-1
 $$
 
-So:
+$$
+\sec^2x-\tan^2x=1
+$$
 
 $$
-\sin^{-1}\left(\frac{1}{2}\right) = \frac{\pi}{6}
+\csc^2x-\cot^2x=1
 $$
 
 ---
 
-# Mental Shortcut for Inverse Trig Problems
-
-When solving expressions like
+## Double-Angle Identities
 
 $$
-\sin^{-1}(0.5)
+\boxed{\sin(2x)=2\sin x\cos x}
 $$
 
-use this 3-step process.
-
-### Step 1 — Find the unit circle angle
-
-Solve
-
 $$
-\sin(\theta) = 0.5
+\cos(2x)=\cos^2x-\sin^2x
 $$
 
-From the unit circle:
+$$
+\cos(2x)=2\cos^2x-1
+$$
 
 $$
-\theta = \frac{\pi}{6}
+\cos(2x)=1-2\sin^2x
 $$
 
 ---
 
-### Step 2 — Check the inverse trig range
+# Recognition Rules
 
-For arcsin:
-
-$$
--\frac{\pi}{2} \le y \le \frac{\pi}{2}
-$$
-
-Since
-
-$$
-\frac{\pi}{6}
-$$
-
-is inside this interval, it is valid.
-
----
-
-### Step 3 — Write the answer
-
-$$
-\sin^{-1}(0.5) = \frac{\pi}{6}
-$$
+| If You See | Think |
+|---|---|
+| $\dfrac1{\cos^2x}$ | $\sec^2x$ |
+| $\sec^2x\,dx$ | $d(\tan x)$ |
+| $\csc^2x\,dx$ | $-d(\cot x)$ |
+| $\sec x\tan x\,dx$ | $d(\sec x)$ |
+| $\csc x\cot x\,dx$ | $-d(\csc x)$ |
+| $\sin(2x)$ | $2\sin x\cos x$ |
+| $\sin x\cos x\,dx$ | Double-angle or $u=\cos x$ |
+| $\dfrac{\sin x}{\cos x}$ | $\tan x$ |
+| $\dfrac{\cos x}{\sin x}$ | $\cot x$ |
+| $1+\tan^2x$ | $\sec^2x$ |
+| $1+\cot^2x$ | $\csc^2x$ |
+| $\sqrt{1+\tan x}$ | $u=1+\tan x$ |
+| $1+\cos^2x$ | $u=1+\cos^2x$ |
+| $1+x^2$ | arctan derivative |
+| $\sqrt{1-x^2}$ | arcsin or arccos derivative |
+| $\dfrac1x$ | $\ln\lvert x\rvert+C$ |
 
 ---
 
-# Example Problems
-
-### Example 1
+# Three Most Important Identities
 
 $$
-\cos^{-1}(-1)
+\boxed{\sin^2x+\cos^2x=1}
 $$
 
-Ask:
-
 $$
-\cos(\theta) = -1
+\boxed{1+\tan^2x=\sec^2x}
 $$
 
-From the unit circle:
-
 $$
-\theta = \pi
-$$
-
-Check the allowed range for arccos:
-
-$$
-0 \le y \le \pi
-$$
-
-So the answer is
-
-$$
-\cos^{-1}(-1) = \pi
+\boxed{1+\cot^2x=\csc^2x}
 $$
 
 ---
 
-### Example 2
+# Three Most Important Derivative–Antiderivative Pairs
 
 $$
-\sin^{-1}(0.5)
+\boxed{
+\frac{d}{dx}(\tan x)=\sec^2x
+\qquad\Longleftrightarrow\qquad
+\int\sec^2x\,dx=\tan x+C
+}
 $$
 
-Solve
-
 $$
-\sin(\theta) = \frac{1}{2}
-$$
-
-Unit circle angle:
-
-$$
-\theta = \frac{\pi}{6}
+\boxed{
+\frac{d}{dx}(\sec x)=\sec x\tan x
+\qquad\Longleftrightarrow\qquad
+\int\sec x\tan x\,dx=\sec x+C
+}
 $$
 
-Check arcsin range:
-
 $$
--\frac{\pi}{2} \le y \le \frac{\pi}{2}
+\boxed{
+\frac{d}{dx}(\sin x)=\cos x
+\qquad\Longleftrightarrow\qquad
+\int\cos x\,dx=\sin x+C
+}
 $$
-
-Final answer:
-
-$$
-\sin^{-1}(0.5) = \frac{\pi}{6}
-$$
-
----
-
-# Key Reminder
-
-When you see inverse trig:
-
-$$
-\sin^{-1}(x),\ \cos^{-1}(x),\ \tan^{-1}(x)
-$$
-
-always think:
-
-1. Find the **unit circle angle**
-2. Check the **principal range**
-3. That angle is the answer
-
-
-# Inverse Trigonometric Derivatives Cheat Sheet
-
-## arcsin
-$y = \sin^{-1}(x)$  
-$\displaystyle \frac{d}{dx}[\sin^{-1}(x)] = \frac{1}{\sqrt{1 - x^2}}$
-
-## arccos
-$y = \cos^{-1}(x)$  
-$\displaystyle \frac{d}{dx}[\cos^{-1}(x)] = -\frac{1}{\sqrt{1 - x^2}}$
-
-## arctan
-$y = \tan^{-1}(x)$  
-$\displaystyle \frac{d}{dx}[\tan^{-1}(x)] = \frac{1}{1 + x^2}$
-
----
-
-## Chain Rule Versions
-
-### arcsin
-$\displaystyle \frac{d}{dx}[\sin^{-1}(u)] = \frac{u'}{\sqrt{1 - u^2}}$
-
-### arccos
-$\displaystyle \frac{d}{dx}[\cos^{-1}(u)] = -\frac{u'}{\sqrt{1 - u^2}}$
-
-### arctan
-$\displaystyle \frac{d}{dx}[\tan^{-1}(u)] = \frac{u'}{1 + u^2}$
-
----
-
-## Domain Notes
-
-### arcsin and arccos
-$-1 \le x \le 1$
-
-### arctan
-$(-\infty, \infty)$
-
----
-
-## Recognition Tips
-
-- $\sin^{-1}(x)$ = arcsin (NOT $1/\sin(x)$)
-- Square root → arcsin / arccos
-- $1 + x^2$ → arctan
-- arccos is the SAME as arcsin but NEGATIVE
-
----
-
-## Example
-
-$\displaystyle \frac{d}{dx}[\sin^{-1}(5x)] = \frac{5}{\sqrt{1 - 25x^2}}$

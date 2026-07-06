@@ -77,3 +77,20 @@ $$
 - Asking how velocity changes? → **Second derivative (acceleration)**
 
 ---
+
+| Given        | Integrate | Result                |
+| ------------ | --------- | --------------------- |
+| Acceleration | Once      | Velocity              |
+| Velocity     | Once      | Position/Displacement |
+
+
+Displacement:
+∫ v(t) dt
+
+Distance traveled:
+1. Solve v(t)=0.
+2. Are any roots inside the interval?
+3. Split the interval at those roots.
+4. Test the sign of v(t) on each piece.
+5. If negative, add a minus sign to that integral.
+6. Add the positive pieces together.
