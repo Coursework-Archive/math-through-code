@@ -69,38 +69,38 @@ A point on the unit circle has coordinates
 |---|---|
 | $\sin x$ | $-\cos x+C$ |
 | $\cos x$ | $\sin x+C$ |
-| $\tan x$ | $\ln|\sec x|+C$ |
-| $\cot x$ | $\ln|\sin x|+C$ |
+| $\tan x$ | $\ln\lvert\sec x\rvert+C$ |
+| $\cot x$ | $\ln\lvert\sin x\rvert+C$ |
 | $\sec^2x$ | $\tan x+C$ |
 | $\csc^2x$ | $-\cot x+C$ |
 | $\sec x\tan x$ | $\sec x+C$ |
 | $\csc x\cot x$ | $-\csc x+C$ |
-| $\sec x$ | $\ln|\sec x+\tan x|+C$ |
-| $\csc x$ | $\ln|\csc x-\cot x|+C$ |
+| $\sec x$ | $\ln\lvert\sec x+\tan x\rvert+C$ |
+| $\csc x$ | $\ln\lvert\csc x-\cot x\rvert+C$ |
 
 ### Equivalent Forms
 
 ```math
 \int\tan x\,dx
-=-\ln|\cos x|+C
-=\ln|\sec x|+C
+=-\ln\lvert\cos x\rvert+C
+=\ln\lvert\sec x\rvert+C
 ```
 
 ```math
 \int\cot x\,dx
-=\ln|\sin x|+C
-=-\ln|\csc x|+C
+=\ln\lvert\sin x\rvert+C
+=-\ln\lvert\csc x\rvert+C
 ```
 
 ```math
 \int\sec x\,dx
-=\ln|\sec x+\tan x|+C
+=\ln\lvert\sec x+\tan x\rvert+C
 ```
 
 ```math
 \int\csc x\,dx
-=\ln|\csc x-\cot x|+C
-=-\ln|\csc x+\cot x|+C
+=\ln\lvert\csc x-\cot x\rvert+C
+=-\ln\lvert\csc x+\cot x\rvert+C
 ```
 
 ## Power Rule
@@ -115,7 +115,7 @@ A point on the unit circle has coordinates
 |---|---|
 | $e^x$ | $e^x+C$ |
 | $a^x$ | $\dfrac{a^x}{\ln a}+C$ |
-| $\dfrac{1}{x}$ | $\ln|x|+C$ |
+| $\dfrac{1}{x}$ | $\ln\lvert x\rvert+C$ |
 
 ---
 
@@ -251,7 +251,7 @@ A point on the unit circle has coordinates
 | $1+\cos^2x$ | Consider $u=1+\cos^2x$ |
 | $1+x^2$ | Arctangent derivative pattern |
 | $\sqrt{1-x^2}$ | Arcsine or arccosine derivative pattern |
-| $\dfrac{1}{x}$ | $\ln|x|+C$ |
+| $\dfrac{1}{x}$ | $\ln\lvert x\rvert+C$ |
 
 ---
 
