@@ -193,9 +193,14 @@ repository.
 - ⬜ Not Started
 - 🟨 In Progress
 - ✅ Completed
-- ⏸️ Paused
-- 🔁 Revisiting
 
 ---
 
 _Last updated: August 2026_
+
+
+```
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
+python -m pip install -e "..\math-library[all]"
+```
