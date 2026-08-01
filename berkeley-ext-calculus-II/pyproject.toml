@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "berkeley-ext-calculus-ii"
+version = "0.1.0"
+description = "Computational notebooks and study materials for UC Berkeley Extension Calculus II."
+requires-python = ">=3.12"
+
+authors = [
+    { name = "Brittany L. Bales" },
+    { email = "tamarkib@gmail.com" },
+]
+
+license = "MIT"
+
+dependencies = [
+    "ipykernel>=6.29",
+    "jupyter>=1.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/Coursework-Archive/math-through-code/tree/main/berkeley-ext-calculus-II"
+Repository = "https://github.com/Coursework-Archive/math-through-code"
+Issues = "https://github.com/Coursework-Archive/math-through-code/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.12",
+]
+
+[tool.setuptools]
+packages = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"

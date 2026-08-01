@@ -42,7 +42,7 @@ math-library/
 From a separate course repository located beside `math-through-code`:
 
 ```powershell
-python -m pip install -e "../math-through-code/math-library[all]"
+python -m pip install -e "..\math-library[all]"
 ```
 
 Editable installation means changes made in this library are immediately available to the course repository.
