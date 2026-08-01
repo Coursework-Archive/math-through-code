@@ -1,11 +1,11 @@
 # Math Through Code
 
-A long-term mathematics learning archive that combines formal coursework, handwritten problem solving, computational notebooks, reusable reference material, and reflective study notes.
+A long-term mathematics learning archive combining formal coursework, handwritten problem solving, computational notebooks, reusable references, and reflective study notes.
 
-The repository is organized around two goals:
+The repository has two goals:
 
 1. Preserve evidence of completed mathematics coursework.
-2. Build a reusable mathematics library that supports future study in calculus, linear algebra, statistics, data science, artificial intelligence, and graduate-level work.
+2. Build reusable mathematical knowledge and Python utilities for future study in calculus, linear algebra, statistics, data science, artificial intelligence, and graduate-level work.
 
 ---
 
@@ -18,10 +18,15 @@ math-through-code/
 ├── berkeley-ext-linear-algebra/
 ├── berkeley-ext-statistics/
 ├── math-library/
+│   ├── knowledge/
+│   ├── src/coursework_math/
+│   ├── tests/
+│   ├── README.md
+│   └── pyproject.toml
 └── README.md
 ```
 
-The structure separates course-specific evidence from reusable mathematical knowledge.
+Course directories preserve course-specific learning evidence. The shared library contains reusable knowledge and installable Python utilities.
 
 ---
 
@@ -54,9 +59,13 @@ Additional mathematics coursework may be added as the academic plan develops thr
 
 ## Shared Math Library
 
-The [`math-library/`](math-library/) directory contains material that is useful across multiple courses.
+The [`math-library/`](math-library/) directory is an installable subproject that can be used by Calculus II and later course repositories.
 
-Examples include:
+It has two distinct responsibilities:
+
+### Knowledge Base
+
+[`math-library/knowledge/`](math-library/knowledge/) contains reusable Markdown references and supporting images, including:
 
 - Algebraic and exponent rules.
 - Logarithms and inverse functions.
@@ -65,14 +74,25 @@ Examples include:
 - Derivative and antiderivative references.
 - Integration strategies and applications.
 - Motion and graph-analysis references.
-- Plotting and visualization helpers.
-- Notebook export and image utilities.
+
+### Python Package
+
+[`math-library/src/coursework_math/`](math-library/src/coursework_math/) contains reusable code for:
+
+- Explicit and implicit equation plotting.
+- Point, polyline, and piecewise-function plotting.
+- Axis and LaTeX formatting.
+- Epsilon-delta visualization.
+- Notebook-safe image display.
+- Notebook sanitization and PDF export.
+
+Other repositories can install the package locally in editable mode or directly from the GitHub subdirectory. Complete instructions are in the [math-library README](math-library/README.md).
 
 ### Promotion Rule
 
 Material begins inside the course where it was learned.
 
-A concept may be promoted into `math-library/` when it becomes:
+A concept may be promoted into the shared library when it becomes:
 
 - Correctly verified.
 - General enough to apply outside one assignment.
@@ -114,7 +134,7 @@ Each course README should document:
 - Enrollment and completion timeline.
 - Study workflow.
 - Reflection workflow.
-- Links to relevant shared-library references.
+- Links to relevant shared-library references and package examples.
 
 ---
 
@@ -149,7 +169,7 @@ For every completed course, the private archive should retain:
 
 ## Computational Learning Approach
 
-The repository uses code to strengthen mathematical understanding rather than replace written reasoning.
+Code is used to strengthen mathematical understanding rather than replace written reasoning.
 
 Computational work may be used to:
 
@@ -175,7 +195,7 @@ A typical learning cycle is:
 4. Use code to verify or visualize selected results.
 5. Review instructor feedback.
 6. Write a brief reflection.
-7. Promote reusable material into `math-library/` when appropriate.
+7. Promote reusable material into `math-library/knowledge/` or `coursework_math` when appropriate.
 8. Archive official records privately after course completion.
 
 ---
@@ -183,18 +203,17 @@ A typical learning cycle is:
 ## Naming and Maintenance Conventions
 
 - Use descriptive, lowercase directory names.
-- Prefer Markdown for reusable references and reflections.
-- Keep generated exports out of version control when the source notebook or document is already tracked.
-- Store shared images under `math-library/images/` unless they are course-specific.
-- Keep reusable utilities under `math-library/tools/` or another clearly named shared directory.
+- Use lowercase, hyphen-separated names for knowledge-base Markdown files.
+- Keep generated exports out of version control when the source notebook is tracked.
+- Store reusable knowledge images under `math-library/knowledge/images/`.
+- Keep reusable Python code under `math-library/src/coursework_math/`.
+- Treat the package-level public imports as stable; keep internal helpers private.
 - Correct mathematical errors in the source reference rather than adding contradictory notes elsewhere.
 - Preserve the distinction between completed work, active study, and planned coursework.
 
 ---
 
 ## Long-Term Direction
-
-This repository is intended to show the development of mathematical maturity over time.
 
 The progression is expected to move through:
 
