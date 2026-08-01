@@ -1,30 +1,24 @@
 # Antiderivatives Cheat Sheet
 
-Whenever $u$ contains
+Whenever $u$ contains trigonometric functions, powers, exponentials, or logarithms, pause and ask:
 
-- $\cos(\cdot)$
-- $\sin(\cdot)$
-- powers such as $(\cos x)^2$
-- exponentials such as $e^x$
-- logarithms
-
-pause and ask:
-
-> "Did I differentiate the whole inside, including constants and signs?"
+> Did I differentiate the entire inside expression, including constants and signs?
 
 ### Memory Cue
 
-**Choose $u$ → Differentiate completely → THEN substitute.**
+**Choose $u$ → differentiate completely → substitute.**
+
+---
 
 ## Basic Antiderivatives
 
 | Function $f(x)$ | Antiderivative $\int f(x)\,dx$ |
 |---|---|
-| $c$ | $$cx + C$$ |
-| $x^n,\; n\neq -1$ | $$\frac{x^{n+1}}{n+1}+C$$ |
-| $\frac{1}{x}$ | $\ln \lvert x \rvert + C$ |
-| $e^x$ | $$e^x+C$$ |
-| $b^x$ | $$\frac{b^x}{\ln b}+C$$ |
+| $c$ | $cx+C$ |
+| $x^n,\;n\ne -1$ | $\dfrac{x^{n+1}}{n+1}+C$ |
+| $\dfrac{1}{x}$ | $\ln|x|+C$ |
+| $e^x$ | $e^x+C$ |
+| $b^x$ | $\dfrac{b^x}{\ln b}+C$ |
 
 ---
 
@@ -32,19 +26,21 @@ pause and ask:
 
 | Function $f(x)$ | Antiderivative $\int f(x)\,dx$ |
 |---|---|
-| $\cos x$ | $$\sin x + C$$ |
-| $\sin x$ | $$-\cos x + C$$ |
-| $\sec^2 x$ | $$\tan x + C$$ |
-| $\sec x \tan x$ | $$\sec x + C$$ |
+| $\cos x$ | $\sin x+C$ |
+| $\sin x$ | $-\cos x+C$ |
+| $\sec^2x$ | $\tan x+C$ |
+| $\csc^2x$ | $-\cot x+C$ |
+| $\sec x\tan x$ | $\sec x+C$ |
+| $\csc x\cot x$ | $-\csc x+C$ |
 
 ---
 
-## Inverse Trig Antiderivatives
+## Inverse-Trigonometric Antiderivatives
 
 | Function $f(x)$ | Antiderivative $\int f(x)\,dx$ |
 |---|---|
-| $\dfrac{1}{\sqrt{1-x^2}}$ | $$\sin^{-1}(x)+C$$ |
-| $\dfrac{1}{1+x^2}$ | $$\tan^{-1}(x)+C$$ |
+| $\dfrac{1}{\sqrt{1-x^2}}$ | $\sin^{-1}(x)+C$ |
+| $\dfrac{1}{1+x^2}$ | $\tan^{-1}(x)+C$ |
 
 ---
 
@@ -52,62 +48,34 @@ pause and ask:
 
 | Function $f(x)$ | Antiderivative $\int f(x)\,dx$ |
 |---|---|
-| $\cosh x$ | $$\sinh x + C$$ |
-| $\sinh x$ | $$\cosh x + C$$ |
+| $\cosh x$ | $\sinh x+C$ |
+| $\sinh x$ | $\cosh x+C$ |
 
 ---
 
-## Table of Indefinite Integrals
-
-| Integral | Antiderivative |
-|----------|----------------|
-| $\int c\,f(x)\,dx$ | $c\int f(x)\,dx$ |
-| $\int [f(x)+g(x)]\,dx$ | $\int f(x)\,dx+\int g(x)\,dx$ |
-| $\int k\,dx$ | $kx+C$ |
-| $\int x^n\,dx,\; n\neq -1$ | $\dfrac{x^{n+1}}{n+1}+C$ |
-| $\int \frac{1}{x}\,dx$ | $\ln \vert x \vert + C$ |
-| $\int e^x\,dx$ | $e^x+C$ |
-| $\int b^x\,dx$ | $\dfrac{b^x}{\ln b}+C$ |
-| $\int \sin x\,dx$ | $-\cos x+C$ |
-| $\int \cos x\,dx$ | $\sin x+C$ |
-| $\int \sec^2 x\,dx$ | $\tan x+C$ |
-| $\int \csc^2 x\,dx$ | $-\cot x+C$ |
-| $\int \sec x\tan x\,dx$ | $\sec x+C$ |
-| $\int \csc x\cot x\,dx$ | $-\csc x+C$ |
-| $\int \dfrac{1}{x^2+1}\,dx$ | $\tan^{-1}(x)+C$ |
-| $\int \dfrac{1}{\sqrt{1-x^2}}\,dx$ | $\sin^{-1}(x)+C$ |
-| $\int \sinh x\,dx$ | $\cosh x+C$ |
-| $\int \cosh x\,dx$ | $\sinh x+C$ |
-
-### Important Note
-
-For
-
-$$
-\int \frac{1}{x}\,dx
-$$
-
-the antiderivative is
-
-$$
-\ln|x|+C
-$$
-
-not $\ln(x)+C$, because the logarithm must be defined for both positive and negative values of $x$.
-
-### Notes
-
-- Use $$\ln \left|x\right|+C$$ whenever the antiderivative of $$\frac{1}{x}$$ appears.
-- The absolute value bars $$\left|x\right|$$ are required because $$x$$ may be positive or negative.
-- Every indefinite integral includes an arbitrary constant of integration $$C$$.
-
-## Rules
+## Linearity Rules
 
 | Rule | Formula |
 |---|---|
-| Constant Multiple Rule | $$\int c f(x)\,dx = c\int f(x)\,dx$$ |
-| Sum Rule | $$\int [f(x)+g(x)]\,dx = \int f(x)\,dx + \int g(x)\,dx$$ |
-| Difference Rule | $$\int [f(x)-g(x)]\,dx = \int f(x)\,dx - \int g(x)\,dx$$ |
+| Constant Multiple Rule | $\int c f(x)\,dx=c\int f(x)\,dx$ |
+| Sum Rule | $\int[f(x)+g(x)]\,dx=\int f(x)\,dx+\int g(x)\,dx$ |
+| Difference Rule | $\int[f(x)-g(x)]\,dx=\int f(x)\,dx-\int g(x)\,dx$ |
+
+---
+
+## Important Special Case
+
+```math
+\int \frac{1}{x}\,dx=\ln|x|+C
+```
+
+The absolute value is required because $1/x$ is defined for positive and negative values of $x$, while $\ln x$ alone is defined only for $x>0$.
+
+### Notes
+
+- Use $\ln|x|+C$ whenever the antiderivative of $1/x$ appears.
+- Every indefinite integral includes an arbitrary constant of integration $C$.
+- The power rule does **not** apply when the exponent is $-1$.
 
 ---
 
@@ -116,92 +84,63 @@ not $\ln(x)+C$, because the logarithm must be defined for both positive and nega
 | If You See | Think |
 |---|---|
 | $x^5,\;x^{-2},\;\sqrt{x}$ | Power Rule |
-| $\dfrac{1}{x}$ | $\boxed{\ln \lvert x \rvert + C}$ (special case) |
-| $e^x$ | stays $e^x$ |
-| $\sec^2x$ | $$\boxed{\tan x + C}$$ |
-| $\sec x\tan x$ | $$\boxed{\sec x + C}$$ |
-| $\dfrac{1}{1+x^2}$ | $$\boxed{\tan^{-1}(x)+C}$$ |
-| $\dfrac{1}{\sqrt{1-x^2}}$ | $$\boxed{\sin^{-1}(x)+C}$$ |
+| $\dfrac{1}{x}$ | $\boxed{\ln|x|+C}$ |
+| $e^x$ | It remains $e^x$ |
+| $\sec^2x$ | $\boxed{\tan x+C}$ |
+| $\sec x\tan x$ | $\boxed{\sec x+C}$ |
+| $\dfrac{1}{1+x^2}$ | $\boxed{\tan^{-1}(x)+C}$ |
+| $\dfrac{1}{\sqrt{1-x^2}}$ | $\boxed{\sin^{-1}(x)+C}$ |
 
 ---
 
 ## Most Important Formulas to Memorize
 
-$$
-\boxed{
-\int x^n\,dx
-=
-\frac{x^{n+1}}{n+1}+C
-\qquad (n\neq -1)
-}
-$$
+```math
+\boxed{\int x^n\,dx=\frac{x^{n+1}}{n+1}+C\qquad(n\ne -1)}
+```
 
-$$
-\boxed{
-\int \frac{1}{x}\,dx
-=
-\ln|x|+C
-}
-$$
+```math
+\boxed{\int \frac{1}{x}\,dx=\ln|x|+C}
+```
 
-$$
-\boxed{
-\int e^x\,dx
-=
-e^x+C
-}
-$$
+```math
+\boxed{\int e^x\,dx=e^x+C}
+```
 
-$$
-\boxed{
-\int \cos x\,dx
-=
-\sin x+C
-}
-$$
+```math
+\boxed{\int \cos x\,dx=\sin x+C}
+```
 
-$$
-\boxed{
-\int \sin x\,dx
-=
--\cos x+C
-}
-$$
+```math
+\boxed{\int \sin x\,dx=-\cos x+C}
+```
 
-$$
-\boxed{
-\int \sec^2x\,dx
-=
-\tan x+C
-}
-$$
+```math
+\boxed{\int \sec^2x\,dx=\tan x+C}
+```
 
-$$
-\boxed{
-\int \sec x\tan x\,dx
-=
-\sec x+C
-}
-$$
+```math
+\boxed{\int \sec x\tan x\,dx=\sec x+C}
+```
+
+---
 
 ## Common Mistakes
 
-1. Always include:
+1. Always include the constant of integration:
 
-$$
+```math
 \boxed{+C}
-$$
+```
 
-2. Do **not** use the power rule for:
+2. Do not use the power rule for $1/x$:
 
-$$
-\boxed{
-\int \frac{1}{x}\,dx
-=
-\ln|x|+C
-}
-$$
+```math
+\boxed{\int \frac{1}{x}\,dx=\ln|x|+C}
+```
 
 3. For the power rule:
-- **Add 1 to the exponent**
-- **Then divide by the new exponent**
+
+- add $1$ to the exponent;
+- divide by the new exponent;
+- include $C$.

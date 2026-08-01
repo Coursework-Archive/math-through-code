@@ -1,280 +1,206 @@
 # Applications of Integration
 
+## Quick Reference
 
 | Situation | Formula | Memory Phrase |
-|------------|---------|---------------|
-| Area under curve | $A=\int_a^b f(x)\,dx$ | Height |
-| Area between curves | $A=\int_a^b(\text{top}-\text{bottom})\,dx$ | Top − Bottom |
-| Area with respect to y | $A=\int_c^d(\text{right}-\text{left})\,dy$ | Right − Left |
-| Disc Method | $V=\pi\int_a^bR^2\,dx$ | One circle |
-| Washer Method | $V=\pi\int_a^b(R^2-r^2)\,dx$ | Big circle − Small circle |
-| Shell Method | $V=2\pi\int_a^b(\text{radius})(\text{height})\,dx$ | Circumference × Height |
+|---|---|---|
+| Area under a curve | $A=\int_a^b f(x)\,dx$ | Height |
+| Area between curves | $A=\int_a^b(\text{top}-\text{bottom})\,dx$ | Top minus bottom |
+| Area with respect to $y$ | $A=\int_c^d(\text{right}-\text{left})\,dy$ | Right minus left |
+| Disk method | $V=\pi\int_a^b R^2\,dx$ | One circle |
+| Washer method | $V=\pi\int_a^b(R^2-r^2)\,dx$ | Big circle minus small circle |
+| Shell method | $V=2\pi\int_a^b(\text{radius})(\text{height})\,dx$ | Circumference times height |
 
+- No hole: use the **disk method**.
+- Hole in the middle: use the **washer method**.
+- Washers use slices perpendicular to the axis of rotation.
+- Shells use slices parallel to the axis of rotation.
 
-If no hole, use the disk method.
-If there is a hole, use the washer method.
+---
 
-Decide:
- - Washers = perpendicular slices
- - Shells = parallel slices
+## Choosing Slices and Variables
 
-Every shell problem, ask yourself:
-1. Are my slices vertical or horizontal? r?
-2. What direction is the height measured? height is opposite r 
-   * Vertical slices → Top − Bottom
-   * Horizontal slices → Right − Left
+### Horizontal Axis of Rotation
+
+Examples: the $x$-axis, $y=1$, or $y=-3$.
+
+- Disks or washers: vertical slices, integrate with respect to $x$.
+- Shells: horizontal slices, integrate with respect to $y$.
+
+### Vertical Axis of Rotation
+
+Examples: the $y$-axis, $x=0$, or $x=2$.
+
+- Disks or washers: horizontal slices, integrate with respect to $y$.
+- Shells: vertical slices, integrate with respect to $x$.
+
+### Shell-Method Checklist
+
+1. Are the slices vertical or horizontal?
+2. In which direction is the shell height measured?
+   - Vertical slices: top minus bottom.
+   - Horizontal slices: right minus left.
 3. What is the radius?
-   Distance from the slice to the axis of rotation.
-   * if the slice is to the left of the axis: radius = axis - slice 
-   * if the slice is to the right of the axis: radius = slice - axis
-   * if the slice is below the axis: radius = axis - slice 
-   * if the slice is above the axis: radius = slice - axis 
-
-Only then decide whether you're integrating with dx or dy.
-
-This is exactly the decision process you'll want on the final exam. Once you identify the axis orientation first, the rest of the setup becomes much more mechanical.
-
-
-
-1. Horizontal axis (like y=1, y=−3, or the x-axis)
-Washers/disks: use vertical slices ⇒dx
-Shells: use horizontal slices ⇒dy
-2. Vertical axis (like x=0, x=2, or the y-axis)
-Washers/disks: use horizontal slices ⇒dy
-Shells: use vertical slices ⇒dx
-
+   - Radius is the distance from the slice to the axis of rotation.
+4. Only then choose $dx$ or $dy$.
 
 ---
 
-# Area Under a Curve
+## Area Under a Curve
 
-If the region is bounded by
+If the region is bounded by $y=f(x)$, the $x$-axis, $x=a$, and $x=b$, then
 
-- $y=f(x)$
-- the x-axis
-- $x=a$
-- $x=b$
+```math
+A=\int_a^b f(x)\,dx.
+```
 
-then
+Memory phrase: **height times thickness**.
 
-$$
-A=\int_a^b f(x)\,dx
-$$
-
-### Memory
-
-Height × Thickness
-
-where
-
-- height $=f(x)$
-- thickness $=dx$
+- Height: $f(x)$.
+- Thickness: $dx$.
 
 ---
 
-# Area Between Two Curves
+## Area Between Two Curves
 
-Suppose
+If the top curve is $f(x)$ and the bottom curve is $g(x)$, then
 
-- top curve $=f(x)$
-- bottom curve $=g(x)$
+```math
+A=\int_a^b\left[f(x)-g(x)\right]dx.
+```
 
-Then
-
-$$
-A=\int_a^b\left(f(x)-g(x)\right)\,dx
-$$
-
-### Memory
-
-**Top − Bottom**
+Memory phrase: **top minus bottom**.
 
 ---
 
-# Area Between Curves (with respect to y)
+## Area Between Curves with Respect to $y$
 
-Suppose
+If the right curve is $x=f(y)$ and the left curve is $x=g(y)$, then
 
-- right curve $=x=f(y)$
-- left curve $=x=g(y)$
+```math
+A=\int_c^d\left[f(y)-g(y)\right]dy.
+```
 
-Then
-
-$$
-A=\int_c^d\left(f(y)-g(y)\right)\,dy
-$$
-
-### Memory
-
-**Right − Left**
+Memory phrase: **right minus left**.
 
 ---
 
-# Disc Method
+## Disk Method
 
-Used when rotating a region around an axis and there is no hole.
+Use the disk method when rotating a region that has no hole.
 
-Volume:
+```math
+V=\pi\int_a^b R(x)^2\,dx.
+```
 
-$$
-V=\pi\int_a^b R(x)^2\,dx
-$$
+Here, $R(x)$ is the radius from the axis of rotation to the outer edge of the region.
 
-where
+The cross-sectional area is
 
-- $R(x)$ = radius
-
-### Memory
-
-Area of a circle × thickness
-
-$$
-\pi r^2
-$$
-
-Think:
-
-**One circle**
+```math
+A(x)=\pi R(x)^2.
+```
 
 ---
 
-# Washer Method
+## Washer Method
 
-Used when rotating a region around an axis and there is a hole.
+Use the washer method when the rotated region has a hole.
 
-Volume:
+```math
+V=\pi\int_a^b\left[R(x)^2-r(x)^2\right]dx.
+```
 
-$$
-V=\pi\int_a^b\left(R(x)^2-r(x)^2\right)\,dx
-$$
+- $R(x)$ is the outer radius.
+- $r(x)$ is the inner radius.
 
-where
-
-- $R(x)$ = outer radius
-- $r(x)$ = inner radius
-
-### Memory
-
-Big circle − Small circle
-
-Think:
-
-**Outer radius squared minus inner radius squared**
+Memory phrase: **outer radius squared minus inner radius squared**.
 
 ---
 
-# Shell Method
+## Shell Method
 
-Volume:
+```math
+V=2\pi\int_a^b
+(\text{radius})(\text{height})\,dx.
+```
 
-$$
-V=
-2\pi
-\int_a^b
-(\text{radius})(\text{height})\,dx
-$$
+A shell's volume comes from
 
-### Memory
+```math
+(\text{circumference})(\text{height})(\text{thickness}).
+```
 
-Circumference × Height × Thickness
-
-where
-
-- radius = distance from axis
-- height = top − bottom
-
-Think:
-
-**Cylinder shells**
+- Radius: distance from the slice to the axis of rotation.
+- Height: top minus bottom for vertical slices, or right minus left for horizontal slices.
 
 ---
 
-# Recognition Guide
+## Recognition Guide
 
-## No Rotation
+### No Rotation
 
-Area problem
+Use an area integral:
 
-Use:
-
-$$
+```math
 A=\int f(x)\,dx
-$$
+```
 
 or
 
-$$
-A=\int(\text{top}-\text{bottom})\,dx
-$$
+```math
+A=\int(\text{top}-\text{bottom})\,dx.
+```
+
+### Rotation with No Hole
+
+Use the disk method:
+
+```math
+V=\pi\int R^2\,dx.
+```
+
+### Rotation with a Hole
+
+Use the washer method:
+
+```math
+V=\pi\int(R^2-r^2)\,dx.
+```
+
+### Radius and Height Are Easier to Describe
+
+Use the shell method:
+
+```math
+V=2\pi\int(\text{radius})(\text{height})\,dx.
+```
 
 ---
 
-## Rotation About an Axis
-
-Volume problem
-
----
-
-## Solid All the Way Through
-
-Disc Method
-
-$$
-V=\pi\int R^2\,dx
-$$
-
----
-
-## Hole in the Middle
-
-Washer Method
-
-$$
-V=\pi\int(R^2-r^2)\,dx
-$$
-
----
-
-## Radius and Height Are Easier
-
-Shell Method
-
-$$
-V=2\pi\int(\text{radius})(\text{height})\,dx
-$$
-
-
----
 ## Fundamental Patterns
 
 ### Area
 
-Top − Bottom
-
-or
-
-Right − Left
-
----
+- Vertical slices: top minus bottom.
+- Horizontal slices: right minus left.
 
 ### Volume
 
-Disc:
+Disk cross section:
 
-$$
+```math
 \pi R^2
-$$
+```
 
-Washer:
+Washer cross section:
 
-$$
+```math
 \pi(R^2-r^2)
-$$
+```
 
-Shell:
+Shell factor:
 
-$$
+```math
 2\pi(\text{radius})(\text{height})
-$$
-
----
+```

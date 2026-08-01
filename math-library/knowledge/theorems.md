@@ -1,129 +1,205 @@
-If an interval contains x=0:
+# Calculus Theorems and Decision Rules
 
-❌ Not continuous
-❌ No EVT
-❌ No MVT
-❌ No Rolle's Theorem
+## Continuity Comes First
 
-# Extreme Value Theorem (EVT)
-Closed interval → `Extreme Value Theorem`
-Is the function continuous on the closed interval 
+If a function is undefined or discontinuous at a point inside the interval, then the continuity hypotheses for the Extreme Value Theorem, Mean Value Theorem, and Rolle's Theorem are not satisfied on that interval.
 
-# Mean Value Theorem (MVT)
-Continuous on closed interval?
-Differentiable on open interval?
-Guarantees some c where
-f′(c)= f(b)−f(a)/b−a
+For example, when a function is undefined at $x=0$ and the interval contains $0$:
 
+- the function is not continuous on the whole interval;
+- the Extreme Value Theorem cannot be invoked;
+- the Mean Value Theorem cannot be invoked;
+- Rolle's Theorem cannot be invoked.
 
-# Finding Absolute Maximum and Minimum
-What do you do first to find the absolute maximum and absolute minimum?
-1. Take the derivative f′(x).
-2. Find the critical numbers that lie inside the interval (−2,3).
-3. Evaluate the original function at:
-   - every critical number, and
-   - both endpoints
-4. Compare the function values.
-The largest value is the absolute maximum; the smallest value is the absolute minimum.
+---
 
-# Optimization problem have two equations:
-Objective function ✅
-This is what you're trying to maximize or minimize.
-what is changing? that is your objective
-area
-Constraint equation ✅
-what is fixed? that is your constraint 
-This is the limitation or restriction given in the problem.
-Here: 600 feet of fencing, which becomes the perimeter equation.
-| Problem says...                      | Objective    | Constraint      |
-| ------------------------------------ | ------------ | --------------- |
-| Greatest area with 600 ft of fencing | Area         | Perimeter = 600 |
-| Least metal for a 500 cm³ can        | Surface Area | Volume = 500    |
-| Maximum profit with a fixed budget   | Profit       | Budget          |
-Optimization
-Objective?
-Constraint?
-Solve constraint for one variable?
-Substitute?
-Differentiate?
-Check maximum/minimum?
+## Extreme Value Theorem (EVT)
 
+### Conditions
 
-# Rolle's Theorem Checklist
-Before using Rolle's Theorem, check:
-✅ Is f(x) continuous on the closed interval [a,b]?
-✅ Is f(x) differentiable on the open interval (a,b)?
-✅ Are the endpoint values equal?
+The function $f$ must be continuous on the closed interval $[a,b]$.
 
-Rolle's Theorem
-Same conditions as MVT plus
-f(a)=f(b) Therefore f′(c)=0
+### Conclusion
 
+The function attains both an absolute maximum and an absolute minimum somewhere on $[a,b]$.
 
-# Fundamental Theorem of Calculus (FTC)
+### Recognition Cue
 
-Recognition clues:
+Closed interval plus continuity suggests the **Extreme Value Theorem**.
 
-Derivative of an integral
-Integral with variable limits
+---
 
-Examples:
-d/dx (∫ f(t)dt)=f(x)
+## Mean Value Theorem (MVT)
 
-and
-d/dx (∫ f(t)dt)=f(g(x))g′(x)
+### Conditions
 
-When the lower limit is variable, remember:
-d/dx (∫ f(t)dt)= −f(g(x))g′(x)
+1. $f$ is continuous on $[a,b]$.
+2. $f$ is differentiable on $(a,b)$.
 
-# L'Hospital's Rule
+### Conclusion
 
-You didn't review it much tonight, but ask yourself:
+There is at least one number $c\in(a,b)$ such that
 
-Do I recognize a 0/0 or ∞/∞ form?
-Do I know I differentiate the numerator and denominator separately?
-Do I know to check the indeterminate form first?
+```math
+f'(c)=\frac{f(b)-f(a)}{b-a}
+```
 
+The instantaneous rate of change at $c$ equals the average rate of change over $[a,b]$.
 
-Newtons 
-x_n+1 = x_n - f(x_n)/f'(x_n)
-Find f
-′
-(x).
-Plug the initial guess x
-0
-	​
+---
 
- into both f(x) and f
-′
-(x).
-Compute
-x
-1
-	​
+## Rolle's Theorem
 
-=x
-0
-	​
+### Conditions
 
-−
-f
-′
-(x
-0
-	​
+1. $f$ is continuous on $[a,b]$.
+2. $f$ is differentiable on $(a,b)$.
+3. $f(a)=f(b)$.
 
-)
-f(x
-0
-	​
+### Conclusion
 
-)
-	​
+There is at least one number $c\in(a,b)$ such that
 
-.
-If another iteration is requested, repeat using x
-1
-	​
+```math
+f'(c)=0
+```
 
-.
+Rolle's Theorem is a special case of the Mean Value Theorem.
+
+---
+
+## Finding Absolute Maximum and Minimum Values
+
+For a continuous function on a closed interval $[a,b]$:
+
+1. Compute $f'(x)$.
+2. Find all critical numbers inside $(a,b)$.
+3. Evaluate the original function at every critical number and both endpoints.
+4. Compare the resulting function values.
+
+The largest value is the absolute maximum, and the smallest value is the absolute minimum.
+
+---
+
+## Optimization Problems
+
+Optimization problems usually contain two equations or relationships.
+
+### Objective Function
+
+The quantity being maximized or minimized, such as:
+
+- area;
+- volume;
+- profit;
+- cost;
+- surface area.
+
+### Constraint Equation
+
+The fixed limitation in the problem, such as:
+
+- a fixed perimeter;
+- a fixed volume;
+- a fixed budget;
+- a fixed amount of material.
+
+| Problem Statement | Objective | Constraint |
+|---|---|---|
+| Greatest area with 600 ft of fencing | Area | Perimeter $=600$ |
+| Least metal for a $500\text{ cm}^3$ can | Surface area | Volume $=500$ |
+| Maximum profit with a fixed budget | Profit | Budget |
+
+### Optimization Workflow
+
+1. Identify the objective.
+2. Identify the constraint.
+3. Solve the constraint for one variable.
+4. Substitute into the objective function.
+5. Differentiate the one-variable objective.
+6. Find and test critical numbers.
+7. Confirm whether the result is a maximum or minimum.
+8. State the answer with units.
+
+---
+
+## Fundamental Theorem of Calculus (FTC)
+
+### Variable Upper Limit
+
+```math
+\frac{d}{dx}\int_a^x f(t)\,dt=f(x)
+```
+
+### Upper Limit Is a Function
+
+```math
+\frac{d}{dx}\int_a^{g(x)} f(t)\,dt=f(g(x))g'(x)
+```
+
+### Variable Lower Limit
+
+```math
+\frac{d}{dx}\int_{g(x)}^a f(t)\,dt=-f(g(x))g'(x)
+```
+
+### Both Limits Are Functions
+
+```math
+\frac{d}{dx}\int_{g(x)}^{h(x)} f(t)\,dt
+=f(h(x))h'(x)-f(g(x))g'(x)
+```
+
+Recognition clues include “differentiate an integral” and “an integral with variable limits.”
+
+---
+
+## L'Hôpital's Rule
+
+L'Hôpital's Rule applies only after direct substitution produces an indeterminate form such as $0/0$ or $\infty/\infty$.
+
+When its hypotheses are satisfied:
+
+```math
+\lim_{x\to a}\frac{f(x)}{g(x)}
+=
+\lim_{x\to a}\frac{f'(x)}{g'(x)}
+```
+
+Differentiate the numerator and denominator separately. Do not use the quotient rule.
+
+### Checklist
+
+1. Substitute first.
+2. Confirm the form is $0/0$ or $\infty/\infty$.
+3. Differentiate numerator and denominator separately.
+4. Evaluate the new limit.
+5. Repeat only if the new expression is still indeterminate.
+
+---
+
+## Newton's Method
+
+Newton's method approximates a root of $f(x)=0$ using
+
+```math
+\boxed{x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}}
+```
+
+### Workflow
+
+1. Choose or use the given initial estimate $x_0$.
+2. Compute $f(x)$ and $f'(x)$.
+3. Substitute $x_0$ into the iteration formula:
+
+```math
+x_1=x_0-\frac{f(x_0)}{f'(x_0)}
+```
+
+4. For another iteration, use $x_1$:
+
+```math
+x_2=x_1-\frac{f(x_1)}{f'(x_1)}
+```
+
+Continue until the requested accuracy or number of iterations is reached.

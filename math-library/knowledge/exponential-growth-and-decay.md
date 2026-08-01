@@ -1,172 +1,193 @@
-# Exponential Growth & Decay 
+# Exponential Growth and Decay
 
-## Pattern: Find exponential function from two points
+## Pattern: Find an Exponential Function from Two Points
 
-Given:
-An exponential function of the form  
-\( f(x) = C b^x \)  
-and two points on the graph.
+Suppose an exponential function has the form $f(x)=Cb^x$ and passes through the points $(x_1,y_1)$ and $(x_2,y_2)$.
 
 ---
 
-### Step 1: Plug both points into the equation
+### Step 1: Substitute Both Points
 
-For point \((x_1, y_1)\):
-\( C b^{x_1} = y_1 \)
+For $(x_1,y_1)$:
 
-For point \((x_2, y_2)\):
-\( C b^{x_2} = y_2 \)
+```math
+Cb^{x_1}=y_1
+```
 
----
+For $(x_2,y_2)$:
 
-### Step 2: Divide the equations (eliminates C)
-
-\[
-\frac{C b^{x_2}}{C b^{x_1}} = \frac{y_2}{y_1}
-\]
-
-\[
-b^{x_2 - x_1} = \frac{y_2}{y_1}
-\]
+```math
+Cb^{x_2}=y_2
+```
 
 ---
 
-### Step 3: Solve for \(b\)
+### Step 2: Divide the Equations
 
-\[
-b = \left(\frac{y_2}{y_1}\right)^{\frac{1}{x_2 - x_1}}
-\]
+Dividing eliminates $C$:
 
-(Usually this simplifies nicely — often no logs needed)
+```math
+\frac{Cb^{x_2}}{Cb^{x_1}}=\frac{y_2}{y_1}
+```
 
----
+Therefore,
 
-### Step 4: Plug back to solve for \(C\)
-
-Use either original equation:
-
-\[
-C b^{x_1} = y_1
-\]
-
-Solve for \(C\)
+```math
+b^{x_2-x_1}=\frac{y_2}{y_1}
+```
 
 ---
 
-### Step 5: Write final answer
+### Step 3: Solve for $b$
 
-\[
-\boxed{f(x) = C b^x}
-\]
+```math
+b=\left(\frac{y_2}{y_1}\right)^{\frac{1}{x_2-x_1}}
+```
+
+This often simplifies without logarithms.
 
 ---
 
-## Example (from your problem)
+### Step 4: Solve for $C$
 
-Points: \((1,6)\), \((3,24)\)
+Substitute $b$ into either original equation:
 
-Step 1:
-\( Cb = 6 \)  
-\( Cb^3 = 24 \)
+```math
+Cb^{x_1}=y_1
+```
 
-Step 2:
-\[
-\frac{Cb^3}{Cb} = \frac{24}{6}
-\Rightarrow b^2 = 4
-\]
+---
 
-Step 3:
-\( b = 2 \)
+### Step 5: Write the Final Function
 
-Step 4:
-\( 2C = 6 \Rightarrow C = 3 \)
+```math
+\boxed{f(x)=Cb^x}
+```
 
-Step 5:
-\[
-\boxed{f(x) = 3 \cdot 2^x}
-\]
+---
+
+## Example
+
+Find the exponential function through $(1,6)$ and $(3,24)$.
+
+From the two points:
+
+```math
+Cb=6
+```
+
+```math
+Cb^3=24
+```
+
+Divide the equations:
+
+```math
+\frac{Cb^3}{Cb}=\frac{24}{6}
+\quad\Longrightarrow\quad
+b^2=4
+```
+
+For a positive exponential base, $b=2$. Then:
+
+```math
+2C=6
+\quad\Longrightarrow\quad
+C=3
+```
+
+Therefore,
+
+```math
+\boxed{f(x)=3\cdot 2^x}
+```
+
+---
 
 ## 1. General Exponential Form
-y = a · b^t
-- a = initial value
-- b = growth/decay factor
-- t = time
 
-Rules:
-- Growth: b > 1
-- Decay: 0 < b < 1
+```math
+y=ab^t
+```
 
+- $a$ is the initial value.
+- $b$ is the growth or decay factor.
+- $t$ is time.
+- Growth: $b>1$.
+- Decay: $0<b<1$.
 
-## 2. Growth & Decay (Rate Form – Discrete)
+## 2. Discrete Growth and Decay
+
 Growth:
-y = a(1 + r)^t
+
+```math
+y=a(1+r)^t
+```
 
 Decay:
-y = a(1 - r)^t
 
-- r = rate (decimal form)
+```math
+y=a(1-r)^t
+```
 
-Examples:
-- 5% growth → r = 0.05 → b = 1.05
-- 8% decay → r = 0.08 → b = 0.92
-
-
-## 3. Continuous Growth / Decay (IMPORTANT)
-y = a e^(kt)
-
-- a = initial value
-- k = continuous growth/decay rate
-- t = time
-- e ≈ 2.718
-
-Rules:
-- k > 0 → growth
-- k < 0 → decay
-
-Example:
-- 3% continuous growth → k = 0.03
-- 7% continuous decay → k = -0.07
-
-
-## 4. Compounded n Times Per Year
-y = a(1 + r/n)^(nt)
-
-- n = number of compounding periods per year
+Here, $r$ is the rate written as a decimal.
 
 Examples:
-- Monthly → n = 12
-- Daily → n = 365
 
+- $5\%$ growth: $r=0.05$ and $b=1.05$.
+- $8\%$ decay: $r=0.08$ and $b=0.92$.
 
-## 5. Annual / Yearly Growth
-y = a(1 + r)^t
+## 3. Continuous Growth and Decay
 
-- t is in years
-- compounding once per year
+```math
+y=ae^{kt}
+```
 
+- $a$ is the initial value.
+- $k$ is the continuous growth or decay rate.
+- $t$ is time.
+- $k>0$ indicates growth.
+- $k<0$ indicates decay.
+
+Examples:
+
+- $3\%$ continuous growth: $k=0.03$.
+- $7\%$ continuous decay: $k=-0.07$.
+
+## 4. Compounding $n$ Times per Year
+
+```math
+y=a\left(1+\frac{r}{n}\right)^{nt}
+```
+
+Here, $n$ is the number of compounding periods per year.
+
+- Monthly: $n=12$.
+- Daily: $n=365$.
+
+## 5. Annual Growth
+
+```math
+y=a(1+r)^t
+```
+
+Use this model when compounding occurs once per year and $t$ is measured in years.
 
 ## 6. Key Conversions
 
-Percent → Decimal:
-r = percent ÷ 100
-
-Discrete factor:
-- Growth: 1 + r
-- Decay: 1 - r
-
-Continuous model:
-- Use k directly in e^(kt)
-
+- Percent to decimal: $r=\dfrac{\text{percent}}{100}$.
+- Discrete growth factor: $1+r$.
+- Discrete decay factor: $1-r$.
+- Continuous models use $k$ directly in $e^{kt}$.
 
 ## 7. Graph Behavior
-- y-intercept = a
-- Growth → increasing curve
-- Decay → decreasing curve
-- Horizontal asymptote: y = 0
 
+- The $y$-intercept is $a$.
+- Growth produces an increasing curve.
+- Decay produces a decreasing curve.
+- The horizontal asymptote is $y=0$.
 
-## 8. When to Use Which Model
+## 8. Choosing a Model
 
-Use:
-- y = a(1 ± r)^t → when rate is applied in steps (yearly, monthly, etc.)
-- y = a e^(kt) → when growth is continuous
+- Use $y=a(1\pm r)^t$ when the rate is applied in steps, such as yearly or monthly.
+- Use $y=ae^{kt}$ when growth or decay is continuous.

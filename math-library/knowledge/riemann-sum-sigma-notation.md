@@ -1,15 +1,18 @@
-# For 45: Riemann Sum Checklist
+# Riemann Sum Recognition Checklist
 
-1. See a **limit + sigma** → think **Riemann sum**
+1. A limit combined with sigma notation usually represents a **Riemann sum**.
+2. The factor outside the sum often represents $\Delta x$.
+3. The repeated expression containing $i$ often represents the sample point $x_i$.
+4. Rewrite the repeated expression as $f(x_i)$.
+5. Recover the interval using
 
-2. **Outside fraction** → $\Delta x$
+```math
+\Delta x=\frac{b-a}{n}.
+```
 
-3. **Repeated expression with $i$** → $x_i$
+A standard Riemann sum has the form
 
-4. Replace ugly expression with **$f(x)$**
-
-5. Find interval from:
-
-$$
-\Delta x=\frac{b-a}{n}
-$$
+```math
+\lim_{n\to\infty}\sum_{i=1}^{n}f(x_i^*)\,\Delta x
+=\int_a^b f(x)\,dx.
+```

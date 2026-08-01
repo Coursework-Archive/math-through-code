@@ -2,23 +2,22 @@
 
 ![Unit Circle](images/unit_circle.jpg)
 
-
-# Unit Circle (Key Angles)
+## Unit Circle: Key Angles
 
 | $\theta$ | $\sin\theta$ | $\cos\theta$ | $\tan\theta$ |
 |---|---:|---:|---:|
 | $0$ | $0$ | $1$ | $0$ |
-| $\frac{\pi}{6}$ | $\frac12$ | $\frac{\sqrt3}{2}$ | $\frac{\sqrt3}{3}$ |
-| $\frac{\pi}{4}$ | $\frac{\sqrt2}{2}$ | $\frac{\sqrt2}{2}$ | $1$ |
-| $\frac{\pi}{3}$ | $\frac{\sqrt3}{2}$ | $\frac12$ | $\sqrt3$ |
+| $\frac{\pi}{6}$ | $\frac{1}{2}$ | $\frac{\sqrt{3}}{2}$ | $\frac{\sqrt{3}}{3}$ |
+| $\frac{\pi}{4}$ | $\frac{\sqrt{2}}{2}$ | $\frac{\sqrt{2}}{2}$ | $1$ |
+| $\frac{\pi}{3}$ | $\frac{\sqrt{3}}{2}$ | $\frac{1}{2}$ | $\sqrt{3}$ |
 | $\frac{\pi}{2}$ | $1$ | $0$ | undefined |
 | $\pi$ | $0$ | $-1$ | $0$ |
 
-Point on the unit circle:
+A point on the unit circle has coordinates
 
-$$
-(x,y)=(\cos\theta,\sin\theta)
-$$
+```math
+(x,y)=(\cos\theta,\sin\theta).
+```
 
 ---
 
@@ -35,9 +34,7 @@ $$
 | $\sec x$ | $\sec x\tan x$ |
 | $\csc x$ | $-\csc x\cot x$ |
 
----
-
-## Inverse Trigonometric Derivatives
+## Inverse-Trigonometric Derivatives
 
 | Function | Derivative |
 |---|---|
@@ -45,27 +42,22 @@ $$
 | $\arccos x$ | $-\dfrac{1}{\sqrt{1-x^2}}$ |
 | $\arctan x$ | $\dfrac{1}{1+x^2}$ |
 
----
+## Chain-Rule Forms
 
-## Chain Rule Forms
-
-$$
+```math
 \frac{d}{dx}\left[\arcsin(u)\right]
-=
-\frac{u'}{\sqrt{1-u^2}}
-$$
+=\frac{u'}{\sqrt{1-u^2}}
+```
 
-$$
+```math
 \frac{d}{dx}\left[\arccos(u)\right]
-=
--\frac{u'}{\sqrt{1-u^2}}
-$$
+=-\frac{u'}{\sqrt{1-u^2}}
+```
 
-$$
+```math
 \frac{d}{dx}\left[\arctan(u)\right]
-=
-\frac{u'}{1+u^2}
-$$
+=\frac{u'}{1+u^2}
+```
 
 ---
 
@@ -73,69 +65,57 @@ $$
 
 ## Trigonometric Antiderivatives
 
-
 | Integrand | Antiderivative |
 |---|---|
 | $\sin x$ | $-\cos x+C$ |
 | $\cos x$ | $\sin x+C$ |
-| $\tan x$ | $\ln\left(\sec x\right)+C$ |
-| $\cot x$ | $\ln\left(\sin x\right)+C$ |
+| $\tan x$ | $\ln|\sec x|+C$ |
+| $\cot x$ | $\ln|\sin x|+C$ |
 | $\sec^2x$ | $\tan x+C$ |
 | $\csc^2x$ | $-\cot x+C$ |
 | $\sec x\tan x$ | $\sec x+C$ |
 | $\csc x\cot x$ | $-\csc x+C$ |
-| $\sec x$ | $\ln\left(\sec x+\tan x\right)+C$ |
-| $\csc x$ | $\ln\left(\csc x-\cot x\right)+C$ |
+| $\sec x$ | $\ln|\sec x+\tan x|+C$ |
+| $\csc x$ | $\ln|\csc x-\cot x|+C$ |
 
 ### Equivalent Forms
 
-$$
+```math
 \int\tan x\,dx
-=
--\ln\left(\cos x\right)+C
-=
-\ln\left(\sec x\right)+C
-$$
+=-\ln|\cos x|+C
+=\ln|\sec x|+C
+```
 
-$$
+```math
 \int\cot x\,dx
-=
-\ln\left(\sin x\right)+C
-=
--\ln\left(\csc x\right)+C
-$$
+=\ln|\sin x|+C
+=-\ln|\csc x|+C
+```
 
-$$
+```math
 \int\sec x\,dx
-=
-\ln\left|\sec x+\tan x\right|+C
-$$
+=\ln|\sec x+\tan x|+C
+```
 
-$$
+```math
 \int\csc x\,dx
-=
-\ln\left|\csc x-\cot x\right|+C
-=
--\ln\left|\csc x+\cot x\right|+C
-$$
-
----
+=\ln|\csc x-\cot x|+C
+=-\ln|\csc x+\cot x|+C
+```
 
 ## Power Rule
 
 | Integrand | Antiderivative |
 |---|---|
-| $x^n,\;n\neq -1$ | $\dfrac{x^{n+1}}{n+1}+C$ |
-
----
+| $x^n,\;n\ne -1$ | $\dfrac{x^{n+1}}{n+1}+C$ |
 
 ## Exponential and Logarithmic Integrals
 
 | Integrand | Antiderivative |
-|---|--|
+|---|---|
 | $e^x$ | $e^x+C$ |
 | $a^x$ | $\dfrac{a^x}{\ln a}+C$ |
-| $\dfrac1x$ | $\ln\lvert x\rvert+C$ |
+| $\dfrac{1}{x}$ | $\ln|x|+C$ |
 
 ---
 
@@ -149,29 +129,24 @@ $$
 | $\arccos x$ | $[-1,1]$ | $[0,\pi]$ |
 | $\arctan x$ | $(-\infty,\infty)$ | $\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$ |
 
----
+## Inverse-Trigonometric Process
 
-## Inverse Trig Process
-
-1. Find the unit circle angle.
-2. Check the principal range.
-3. That angle is the answer.
+1. Find the corresponding unit-circle angle.
+2. Check the principal range of the inverse function.
+3. Select the angle in that range.
 
 ---
-
-
-
 
 # Trigonometric Definitions
 
-| Function | Ratio | Unit Circle |
+| Function | Right-Triangle Ratio | Unit-Circle Form |
 |---|---|---|
 | $\sin\theta$ | opposite/hypotenuse | $y$ |
 | $\cos\theta$ | adjacent/hypotenuse | $x$ |
 | $\tan\theta$ | $\dfrac{\sin\theta}{\cos\theta}$ | $\dfrac{y}{x}$ |
 | $\cot\theta$ | $\dfrac{\cos\theta}{\sin\theta}$ | $\dfrac{x}{y}$ |
-| $\sec\theta$ | $\dfrac1{\cos\theta}$ | $\dfrac1x$ |
-| $\csc\theta$ | $\dfrac1{\sin\theta}$ | $\dfrac1y$ |
+| $\sec\theta$ | $\dfrac{1}{\cos\theta}$ | $\dfrac{1}{x}$ |
+| $\csc\theta$ | $\dfrac{1}{\sin\theta}$ | $\dfrac{1}{y}$ |
 
 ---
 
@@ -179,89 +154,81 @@ $$
 
 ## Reciprocal Identities
 
-$$
-\sec x=\frac1{\cos x}
-$$
+```math
+\sec x=\frac{1}{\cos x}
+```
 
-$$
-\csc x=\frac1{\sin x}
-$$
+```math
+\csc x=\frac{1}{\sin x}
+```
 
-$$
-\cot x=\frac1{\tan x}
-$$
+```math
+\cot x=\frac{1}{\tan x}
+```
 
-### Squared Reciprocal Identity
-
-$$
-\boxed{\sec^2x=\frac1{\cos^2x}}
-$$
-
----
+```math
+\boxed{\sec^2x=\frac{1}{\cos^2x}}
+```
 
 ## Quotient Identities
 
-$$
+```math
 \tan x=\frac{\sin x}{\cos x}
-$$
+```
 
-$$
+```math
 \cot x=\frac{\cos x}{\sin x}
-$$
-
----
+```
 
 ## Pythagorean Identities
 
-$$
+```math
 \sin^2x+\cos^2x=1
-$$
+```
 
-$$
+```math
 1+\tan^2x=\sec^2x
-$$
+```
 
-$$
+```math
 1+\cot^2x=\csc^2x
-$$
+```
 
 ### Rearrangements
 
-$$
+```math
 \tan^2x=\sec^2x-1
-$$
+```
 
-$$
+```math
 \cot^2x=\csc^2x-1
-$$
+```
 
-$$
+```math
 \sec^2x-\tan^2x=1
-$$
+```
 
-$$
+```math
 \csc^2x-\cot^2x=1
-$$
-
----
+```
 
 ## Double-Angle Identities
 
-$$
+```math
 \boxed{\sin(2x)=2\sin x\cos x}
-$$
+```
 
-$$
+```math
 \cos(2x)=\cos^2x-\sin^2x
-$$
+```
 
-$$
+```math
 \cos(2x)=2\cos^2x-1
-$$
+```
 
-$$
+```math
 \cos(2x)=1-2\sin^2x
-$$
+```
 
 ---
 
@@ -269,63 +236,57 @@ $$
 
 | If You See | Think |
 |---|---|
-| $\dfrac1{\cos^2x}$ | $\sec^2x$ |
+| $\dfrac{1}{\cos^2x}$ | $\sec^2x$ |
 | $\sec^2x\,dx$ | $d(\tan x)$ |
 | $\csc^2x\,dx$ | $-d(\cot x)$ |
 | $\sec x\tan x\,dx$ | $d(\sec x)$ |
 | $\csc x\cot x\,dx$ | $-d(\csc x)$ |
 | $\sin(2x)$ | $2\sin x\cos x$ |
-| $\sin x\cos x\,dx$ | Double-angle or $u=\cos x$ |
+| $\sin x\cos x\,dx$ | Double-angle identity or $u=\cos x$ |
 | $\dfrac{\sin x}{\cos x}$ | $\tan x$ |
 | $\dfrac{\cos x}{\sin x}$ | $\cot x$ |
 | $1+\tan^2x$ | $\sec^2x$ |
 | $1+\cot^2x$ | $\csc^2x$ |
-| $\sqrt{1+\tan x}$ | $u=1+\tan x$ |
-| $1+\cos^2x$ | $u=1+\cos^2x$ |
-| $1+x^2$ | arctan derivative |
-| $\sqrt{1-x^2}$ | arcsin or arccos derivative |
-| $\dfrac1x$ | $\ln\lvert x\rvert+C$ |
+| $\sqrt{1+\tan x}$ | Consider $u=1+\tan x$ |
+| $1+\cos^2x$ | Consider $u=1+\cos^2x$ |
+| $1+x^2$ | Arctangent derivative pattern |
+| $\sqrt{1-x^2}$ | Arcsine or arccosine derivative pattern |
+| $\dfrac{1}{x}$ | $\ln|x|+C$ |
 
 ---
 
 # Three Most Important Identities
 
-$$
+```math
 \boxed{\sin^2x+\cos^2x=1}
-$$
+```
 
-$$
+```math
 \boxed{1+\tan^2x=\sec^2x}
-$$
+```
 
-$$
+```math
 \boxed{1+\cot^2x=\csc^2x}
-$$
+```
 
 ---
 
-# Three Most Important Derivative–Antiderivative Pairs
+# Three Important Derivative–Antiderivative Pairs
 
-$$
-\boxed{
-\frac{d}{dx}(\tan x)=\sec^2x
-\qquad\Longleftrightarrow\qquad
-\int\sec^2x\,dx=\tan x+C
-}
-$$
+```math
+\boxed{\frac{d}{dx}(\tan x)=\sec^2x
+\quad\Longleftrightarrow\quad
+\int\sec^2x\,dx=\tan x+C}
+```
 
-$$
-\boxed{
-\frac{d}{dx}(\sec x)=\sec x\tan x
-\qquad\Longleftrightarrow\qquad
-\int\sec x\tan x\,dx=\sec x+C
-}
-$$
+```math
+\boxed{\frac{d}{dx}(\sec x)=\sec x\tan x
+\quad\Longleftrightarrow\quad
+\int\sec x\tan x\,dx=\sec x+C}
+```
 
-$$
-\boxed{
-\frac{d}{dx}(\sin x)=\cos x
-\qquad\Longleftrightarrow\qquad
-\int\cos x\,dx=\sin x+C
-}
-$$
+```math
+\boxed{\frac{d}{dx}(\sin x)=\cos x
+\quad\Longleftrightarrow\quad
+\int\cos x\,dx=\sin x+C}
+```
