@@ -16,7 +16,7 @@ Whenever $u$ contains trigonometric functions, powers, exponentials, or logarith
 |---|---|
 | $c$ | $cx+C$ |
 | $x^n,\;n\ne -1$ | $\dfrac{x^{n+1}}{n+1}+C$ |
-| $\dfrac{1}{x}$ | $\ln|x|+C$ |
+| $\dfrac{1}{x}$ | $\ln\lvert x\rvert+C$ |
 | $e^x$ | $e^x+C$ |
 | $b^x$ | $\dfrac{b^x}{\ln b}+C$ |
 
@@ -66,14 +66,14 @@ Whenever $u$ contains trigonometric functions, powers, exponentials, or logarith
 ## Important Special Case
 
 ```math
-\int \frac{1}{x}\,dx=\ln|x|+C
+\int \frac{1}{x}\,dx=\ln\lvert x\rvert+C
 ```
 
 The absolute value is required because $1/x$ is defined for positive and negative values of $x$, while $\ln x$ alone is defined only for $x>0$.
 
 ### Notes
 
-- Use $\ln|x|+C$ whenever the antiderivative of $1/x$ appears.
+- Use $\ln\lvert x\rvert+C$ whenever the antiderivative of $1/x$ appears.
 - Every indefinite integral includes an arbitrary constant of integration $C$.
 - The power rule does **not** apply when the exponent is $-1$.
 
@@ -84,12 +84,12 @@ The absolute value is required because $1/x$ is defined for positive and negativ
 | If You See | Think |
 |---|---|
 | $x^5,\;x^{-2},\;\sqrt{x}$ | Power Rule |
-| $\dfrac{1}{x}$ | $\boxed{\ln|x|+C}$ |
+| $\dfrac{1}{x}$ | $\ln\lvert x\rvert+C$ |
 | $e^x$ | It remains $e^x$ |
-| $\sec^2x$ | $\boxed{\tan x+C}$ |
-| $\sec x\tan x$ | $\boxed{\sec x+C}$ |
-| $\dfrac{1}{1+x^2}$ | $\boxed{\tan^{-1}(x)+C}$ |
-| $\dfrac{1}{\sqrt{1-x^2}}$ | $\boxed{\sin^{-1}(x)+C}$ |
+| $\sec^2x$ | $\tan x+C$ |
+| $\sec x\tan x$ | $\sec x+C$ |
+| $\dfrac{1}{1+x^2}$ | $\tan^{-1}(x)+C$ |
+| $\dfrac{1}{\sqrt{1-x^2}}$ | $\sin^{-1}(x)+C$ |
 
 ---
 
@@ -100,7 +100,7 @@ The absolute value is required because $1/x$ is defined for positive and negativ
 ```
 
 ```math
-\boxed{\int \frac{1}{x}\,dx=\ln|x|+C}
+\boxed{\int \frac{1}{x}\,dx=\ln\lvert x\rvert+C}
 ```
 
 ```math
@@ -136,7 +136,7 @@ The absolute value is required because $1/x$ is defined for positive and negativ
 2. Do not use the power rule for $1/x$:
 
 ```math
-\boxed{\int \frac{1}{x}\,dx=\ln|x|+C}
+\boxed{\int \frac{1}{x}\,dx=\ln\lvert x\rvert+C}
 ```
 
 3. For the power rule:

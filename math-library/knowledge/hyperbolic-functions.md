@@ -15,11 +15,11 @@
 ```
 
 ```math
-\operatorname{csch}x=\frac{1}{\sinh x}
+\mathrm{csch}\,x=\frac{1}{\sinh x}
 ```
 
 ```math
-\operatorname{sech}x=\frac{1}{\cosh x}
+\mathrm{sech}\,x=\frac{1}{\cosh x}
 ```
 
 ```math
@@ -43,7 +43,7 @@
 ```
 
 ```math
-1-\tanh^2x=\operatorname{sech}^2x
+1-\tanh^2x=\mathrm{sech}^2x
 ```
 
 ```math
@@ -67,21 +67,21 @@
 ```
 
 ```math
-\frac{d}{dx}(\tanh x)=\operatorname{sech}^2x
+\frac{d}{dx}(\tanh x)=\mathrm{sech}^2x
 ```
 
 ```math
-\frac{d}{dx}(\operatorname{csch}x)
-=-\operatorname{csch}x\coth x
+\frac{d}{dx}(\mathrm{csch}\,x)
+=-\mathrm{csch}\,x\coth x
 ```
 
 ```math
-\frac{d}{dx}(\operatorname{sech}x)
-=-\operatorname{sech}x\tanh x
+\frac{d}{dx}(\mathrm{sech}\,x)
+=-\mathrm{sech}\,x\tanh x
 ```
 
 ```math
-\frac{d}{dx}(\coth x)=-\operatorname{csch}^2x
+\frac{d}{dx}(\coth x)=-\mathrm{csch}^2x
 ```
 
 ---
@@ -118,12 +118,12 @@
 ```
 
 ```math
-\frac{d}{dx}(\operatorname{csch}^{-1}x)
-=-\frac{1}{|x|\sqrt{1+x^2}}
+\frac{d}{dx}(\mathrm{csch}^{-1}x)
+=-\frac{1}{\lvert x\rvert\sqrt{1+x^2}}
 ```
 
 ```math
-\frac{d}{dx}(\operatorname{sech}^{-1}x)
+\frac{d}{dx}(\mathrm{sech}^{-1}x)
 =-\frac{1}{x\sqrt{1-x^2}}
 ```
 
@@ -228,7 +228,7 @@ Memorize:
 ```
 
 ```math
-\frac{d}{dx}(\tanh x)=\operatorname{sech}^2x
+\frac{d}{dx}(\tanh x)=\mathrm{sech}^2x
 ```
 
 Unlike several trigonometric derivatives, these three do not introduce a negative sign.
