@@ -28,11 +28,6 @@ math-through-code/
 ├── berkeley-ext-linear-algebra/
 ├── berkeley-ext-statistics/
 ├── math-library/
-│   ├── images/
-│   ├── tools/
-│   ├── plotting.py
-│   ├── image_utils.py
-│   └── topic references
 └── README.md
 ```
 
