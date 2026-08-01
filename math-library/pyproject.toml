@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coursework-math"
+version = "0.1.0"
+description = "Reusable plotting, notebook, and image utilities for mathematics coursework."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "Brittany L. Bales" },
+]
+dependencies = [
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "sympy>=1.12",
+]
+
+[project.optional-dependencies]
+notebook = [
+  "ipython>=8.0",
+  "pillow>=10.0",
+]
+pdf = [
+  "nbconvert>=7.16",
+  "nbformat>=5.10",
+]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+]
+all = [
+  "ipython>=8.0",
+  "pillow>=10.0",
+  "nbconvert>=7.16",
+  "nbformat>=5.10",
+]
+
+[project.scripts]
+math-notebook-pdf = "coursework_math.notebooks.export:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
