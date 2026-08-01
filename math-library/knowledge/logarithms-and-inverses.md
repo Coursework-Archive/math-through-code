@@ -7,7 +7,7 @@
 | $x^n,\;n\neq -1$ | $\dfrac{x^{n+1}}{n+1}+C$ |
 | $e^x$ | $e^x+C$ |
 | $a^x$ | $\dfrac{a^x}{\ln a}+C$ |
-| $\dfrac{1}{x}$ | $\ln|x|+C$ |
+| $\dfrac{1}{x}$ | $\ln\lvert x\rvert+C$ |
 
 ---
 
