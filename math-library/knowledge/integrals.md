@@ -1,79 +1,86 @@
-1. Simplify the integrand if possible
-    - Expand powers if necessary.
-    - Rewrite radicals as fractional exponents.
-    - Factor constants out.
+# Integral Recognition Strategy
 
-2. Look for a basic antiderivative
+## 1. Simplify the Integrand
 
-Ask:
+Before choosing a method:
 
-- Is it a polynomial?
+- expand powers when useful;
+- rewrite radicals as fractional exponents;
+- factor constants out of the integral;
+- simplify algebraic fractions when possible.
 
-$$
+## 2. Look for a Basic Antiderivative
+
+Ask whether the integrand matches a familiar pattern.
+
+### Polynomial
+
+```math
 \int x^n\,dx
-$$
+```
 
-- Is it exponential?
+### Exponential
 
-$$
+```math
 \int e^x\,dx
-$$
+```
 
-$$
+```math
 \int a^x\,dx
-$$
+```
 
-- Is it logarithmic?
+### Logarithmic Pattern
 
-$$
+```math
 \int \frac{1}{x}\,dx
-$$
+```
 
-- Is it trigonometric?
+### Trigonometric
 
-$$
+```math
 \int \sin x\,dx
-$$
+```
 
-$$
+```math
 \int \cos x\,dx
-$$
+```
 
-$$
-\int \sec^2 x\,dx
-$$
+```math
+\int \sec^2x\,dx
+```
 
-3. Look for a composition (inside function)
+## 3. Look for a Composition
 
-Example:
+A composition often suggests substitution. Look for an inside function together with its derivative.
 
-$$
+### Example
+
+```math
 \int \frac{2z}{z^2+1}\,dz
-$$
+```
 
 Choose
 
-$$
-u=z^2+1
-$$
+```math
+u=z^2+1.
+```
 
 Then
 
-$$
-du=2z\,dz
-$$
+```math
+du=2z\,dz,
+```
 
 so the integral becomes
 
-$$
-\int \frac{1}{u}\,du
-=\ln|u|+C
-$$
+```math
+\int\frac{1}{u}\,du=\ln|u|+C.
+```
 
 Substitute back:
 
-$$
+```math
 \boxed{\ln(z^2+1)+C}
-$$
+```
 
-Because $z^2+1>0$ for every real $z$, the absolute value is optional in the final expression.
+Because $z^2+1>0$ for every real $z$, absolute-value bars are optional in the final expression.
