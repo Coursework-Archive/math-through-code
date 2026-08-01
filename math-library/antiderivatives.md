@@ -58,7 +58,6 @@ pause and ask:
 ---
 
 ## Table of Indefinite Integrals
-## Table of Indefinite Integrals
 
 | Integral | Antiderivative |
 |----------|----------------|

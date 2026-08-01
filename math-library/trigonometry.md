@@ -1,6 +1,6 @@
 # Calculus I Trigonometry Reference
 
-![Unit Circle](../reference/images/unit_circle.jpg)
+![Unit Circle](images/unit_circle.jpg)
 
 
 # Unit Circle (Key Angles)
