@@ -14,17 +14,7 @@ The repository is organized around two goals:
 ```text
 math-through-code/
 ├── berkeley-ext-calculus-I/
-│   ├── handwritten/
-│   ├── notebooks/
-│   ├── exam-prep/
-│   ├── reflections/
-│   └── README.md
 ├── berkeley-ext-calculus-II/
-│   ├── handwritten/
-│   ├── notebooks/
-│   ├── exam-prep/
-│   ├── reflections/
-│   └── README.md
 ├── berkeley-ext-linear-algebra/
 ├── berkeley-ext-statistics/
 ├── math-library/
