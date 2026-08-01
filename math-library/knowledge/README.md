@@ -29,7 +29,8 @@ Use GitHub-compatible math syntax:
 - Inline math: `$f(x)=x^2$`.
 - Display math: fenced `math` blocks.
 - Keep table-cell formulas inline rather than placing display-math delimiters inside tables.
-- Use supported operators such as `\operatorname{sech}` and `\operatorname{csch}` when a shorthand command does not render on GitHub.
+- Inside Markdown tables, write absolute values as `\lvert x\rvert` instead of literal `|x|`, because pipe characters divide table columns.
+- For hyperbolic secant and cosecant, use `\mathrm{sech}` and `\mathrm{csch}`. GitHub does not allow `\operatorname` in this renderer.
 
 Example:
 
@@ -38,6 +39,14 @@ Example:
 \int_a^b f(x)\,dx
 ```
 ````
+
+Table-safe absolute value example:
+
+```markdown
+| Function | Antiderivative |
+|---|---|
+| `$1/x$` | `$\ln\lvert x\rvert+C$` |
+```
 
 ## Naming
 
