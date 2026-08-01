@@ -2,350 +2,303 @@
 
 ## Definitions
 
-$$
-\sinh x = \frac{e^x - e^{-x}}{2}
-$$
+```math
+\sinh x=\frac{e^x-e^{-x}}{2}
+```
 
-$$
-\cosh x = \frac{e^x + e^{-x}}{2}
-$$
+```math
+\cosh x=\frac{e^x+e^{-x}}{2}
+```
 
-$$
-\tanh x = \frac{\sinh x}{\cosh x}
-$$
+```math
+\tanh x=\frac{\sinh x}{\cosh x}
+```
 
-$$
-\csch x = \frac{1}{\sinh x}
-$$
+```math
+\operatorname{csch}x=\frac{1}{\sinh x}
+```
 
-$$
-\sech x = \frac{1}{\cosh x}
-$$
+```math
+\operatorname{sech}x=\frac{1}{\cosh x}
+```
 
-$$
-\coth x = \frac{\cosh x}{\sinh x}
-$$
-
+```math
+\coth x=\frac{\cosh x}{\sinh x}
+```
 
 ---
 
 ## Key Identities
 
-$$
-\sinh(-x) = -\sinh x
-$$
+```math
+\sinh(-x)=-\sinh x
+```
 
-$$
-\cosh(-x) = \cosh x
-$$
+```math
+\cosh(-x)=\cosh x
+```
 
-$$
-\cosh^2 x - \sinh^2 x = 1
-$$
+```math
+\cosh^2x-\sinh^2x=1
+```
 
-$$
-1 - \tanh^2 x = \sech^2 x
-$$
+```math
+1-\tanh^2x=\operatorname{sech}^2x
+```
 
-$$
-\sinh(x + y) = \sinh x \cosh y + \cosh x \sinh y
-$$
+```math
+\sinh(x+y)=\sinh x\cosh y+\cosh x\sinh y
+```
 
-$$
-\cosh(x + y) = \cosh x \cosh y + \sinh x \sinh y
-$$
-
+```math
+\cosh(x+y)=\cosh x\cosh y+\sinh x\sinh y
+```
 
 ---
 
 ## Derivatives
 
-$$
-\frac{d}{dx}(\sinh x) = \cosh x
-$$
+```math
+\frac{d}{dx}(\sinh x)=\cosh x
+```
 
-$$
-\frac{d}{dx}(\cosh x) = \sinh x
-$$
+```math
+\frac{d}{dx}(\cosh x)=\sinh x
+```
 
-$$
-\frac{d}{dx}(\tanh x) = \sech^2 x
-$$
+```math
+\frac{d}{dx}(\tanh x)=\operatorname{sech}^2x
+```
 
-$$
-\frac{d}{dx}(\csch x) = -\csch x \coth x
-$$
+```math
+\frac{d}{dx}(\operatorname{csch}x)
+=-\operatorname{csch}x\coth x
+```
 
-$$
-\frac{d}{dx}(\sech x) = -\sech x \tanh x
-$$
+```math
+\frac{d}{dx}(\operatorname{sech}x)
+=-\operatorname{sech}x\tanh x
+```
 
-$$
-\frac{d}{dx}(\coth x) = -\csch^2 x
-$$
-
+```math
+\frac{d}{dx}(\coth x)=-\operatorname{csch}^2x
+```
 
 ---
 
-## Inverse Hyperbolic Functions (Log Forms)
+## Inverse Hyperbolic Functions in Logarithmic Form
 
-$$
-\sinh^{-1} x = \ln\left(x + \sqrt{x^2 + 1}\right)
-$$
+```math
+\sinh^{-1}x=\ln\left(x+\sqrt{x^2+1}\right)
+```
 
-$$
-\cosh^{-1} x = \ln\left(x + \sqrt{x^2 - 1}\right), \quad x \ge 1
-$$
+```math
+\cosh^{-1}x=\ln\left(x+\sqrt{x^2-1}\right),\qquad x\ge 1
+```
 
-$$
-\tanh^{-1} x = \frac{1}{2} \ln\left(\frac{1 + x}{1 - x}\right), \quad -1 < x < 1
-$$
-
+```math
+\tanh^{-1}x=\frac12\ln\left(\frac{1+x}{1-x}\right),
+\qquad -1<x<1
+```
 
 ---
 
 ## Derivatives of Inverse Hyperbolic Functions
 
-$$
-\frac{d}{dx}(\sinh^{-1} x) = \frac{1}{\sqrt{1 + x^2}}
-$$
+```math
+\frac{d}{dx}(\sinh^{-1}x)=\frac{1}{\sqrt{1+x^2}}
+```
 
-$$
-\frac{d}{dx}(\cosh^{-1} x) = \frac{1}{\sqrt{x^2 - 1}}
-$$
+```math
+\frac{d}{dx}(\cosh^{-1}x)=\frac{1}{\sqrt{x^2-1}}
+```
 
-$$
-\frac{d}{dx}(\tanh^{-1} x) = \frac{1}{1 - x^2}
-$$
+```math
+\frac{d}{dx}(\tanh^{-1}x)=\frac{1}{1-x^2}
+```
 
-$$
-\frac{d}{dx}(\csch^{-1} x) = -\frac{1}{|x|\sqrt{1 + x^2}}
-$$
+```math
+\frac{d}{dx}(\operatorname{csch}^{-1}x)
+=-\frac{1}{|x|\sqrt{1+x^2}}
+```
 
-$$
-\frac{d}{dx}(\sech^{-1} x) = -\frac{1}{x\sqrt{1 - x^2}}
-$$
+```math
+\frac{d}{dx}(\operatorname{sech}^{-1}x)
+=-\frac{1}{x\sqrt{1-x^2}}
+```
 
-$$
-\frac{d}{dx}(\coth^{-1} x) = \frac{1}{1 - x^2}
-$$
-
-# Hyperbolic Functions – Recognition & Strategy Guide
-
----
-
-# 1. WHEN DO HYPERBOLIC FUNCTIONS SHOW UP?
-
-## A. Expressions involving exponentials (hidden hyperbolics)
-
-If you see:
-$$
-\frac{e^x - e^{-x}}{2}, \quad \frac{e^x + e^{-x}}{2}
-$$
-
-Think immediately:
-$$
-\sinh x, \quad \cosh x
-$$
-
-👉 Strategy:
-Rewrite in hyperbolic form to simplify derivatives/integrals
+```math
+\frac{d}{dx}(\coth^{-1}x)=\frac{1}{1-x^2}
+```
 
 ---
 
-## B. Integrals with $\sqrt{x^2 + 1}$ or $\sqrt{x^2 - 1}$
+# Recognition and Strategy Guide
 
-If you see:
-$$
-\sqrt{x^2 + 1}
-$$
-Use:
-$$
-x = \sinh t
-$$
+## 1. When Hyperbolic Functions Appear
 
-If you see:
-$$
-\sqrt{x^2 - 1}
-$$
-Use:
-$$
-x = \cosh t
-$$
+### A. Hidden Hyperbolic Expressions
 
-👉 Why:
-Because:
-$$
-\cosh^2 t - \sinh^2 t = 1
-$$
+When you see
 
-This simplifies radicals cleanly.
+```math
+\frac{e^x-e^{-x}}{2}
+\qquad\text{or}\qquad
+\frac{e^x+e^{-x}}{2},
+```
 
----
+recognize $\sinh x$ and $\cosh x$.
 
-## C. Log expressions of this form
+**Strategy:** Rewrite the expression in hyperbolic form before differentiating or integrating.
 
-If you see:
-$$
-\ln\left(x + \sqrt{x^2 + 1}\right)
-$$
+### B. Radicals Involving $x^2\pm 1$
 
-Recognize immediately:
-$$
-= \sinh^{-1} x
-$$
+For
 
-If:
-$$
-\ln\left(x + \sqrt{x^2 - 1}\right)
-$$
+```math
+\sqrt{x^2+1},
+```
 
-Then:
-$$
-= \cosh^{-1} x
-$$
+try the substitution $x=\sinh t$.
 
-👉 Strategy:
-Convert logs → inverse hyperbolic (cleaner derivatives)
+For
 
----
+```math
+\sqrt{x^2-1},
+```
 
-## D. Derivatives that look like inverse trig (but aren’t)
+try $x=\cosh t$ when the domain supports $x\ge 1$.
 
-If you see:
-$$
-\frac{1}{\sqrt{1 + x^2}}
-$$
+The key identity is
 
-This is:
-$$
-\frac{d}{dx}(\sinh^{-1} x)
-$$
+```math
+\cosh^2t-\sinh^2t=1.
+```
 
-NOT arctan, NOT arcsin
+### C. Logarithmic Forms
+
+Recognize
+
+```math
+\ln\left(x+\sqrt{x^2+1}\right)=\sinh^{-1}x
+```
+
+and
+
+```math
+\ln\left(x+\sqrt{x^2-1}\right)=\cosh^{-1}x.
+```
+
+### D. Inverse-Hyperbolic Derivative Pattern
+
+```math
+\frac{1}{\sqrt{1+x^2}}
+```
+
+is the derivative of $\sinh^{-1}x$, not an inverse-trigonometric derivative.
 
 ---
 
-# 2. HYPERBOLIC vs TRIG – QUICK DECISION TABLE
+## 2. Hyperbolic vs. Trigonometric Substitution
 
-| Expression | Use |
-|----------|-----|
-| $\sqrt{1 - x^2}$ | trig (sin) |
-| $\sqrt{1 + x^2}$ | hyperbolic (sinh) |
-| $\sqrt{x^2 - 1}$ | hyperbolic (cosh) |
-
-👉 This is one of the most tested patterns
+| Expression | Typical Choice |
+|---|---|
+| $\sqrt{1-x^2}$ | Trigonometric: $x=\sin t$ |
+| $\sqrt{1+x^2}$ | Hyperbolic: $x=\sinh t$ |
+| $\sqrt{x^2-1}$ | Hyperbolic: $x=\cosh t$ |
 
 ---
 
-# 3. DERIVATIVE PATTERNS (FAST RECALL)
+## 3. Fast Derivative Recall
 
-## Core swaps
-$$
-\sinh x \leftrightarrow \cosh x
-$$
+The core pair is
 
-## Key ones to memorize
-$$
-\frac{d}{dx}(\sinh x) = \cosh x
-$$
+```math
+\sinh x\longleftrightarrow\cosh x.
+```
 
-$$
-\frac{d}{dx}(\cosh x) = \sinh x
-$$
+Memorize:
 
-$$
-\frac{d}{dx}(\tanh x) = \sech^2 x
-$$
+```math
+\frac{d}{dx}(\sinh x)=\cosh x
+```
 
-👉 Notice:
-No negative signs (unlike trig)
+```math
+\frac{d}{dx}(\cosh x)=\sinh x
+```
 
----
+```math
+\frac{d}{dx}(\tanh x)=\operatorname{sech}^2x
+```
 
-# 4. IDENTITIES YOU ACTUALLY USE
-
-## Most important:
-$$
-\cosh^2 x - \sinh^2 x = 1
-$$
-
-Compare:
-$$
-\sin^2 x + \cos^2 x = 1
-$$
-
-👉 Same idea, different sign
+Unlike several trigonometric derivatives, these three do not introduce a negative sign.
 
 ---
 
-# 5. COMMON EXAM TRAPS
+## 4. Most Useful Identity
 
-## Trap 1: Mixing trig + hyperbolic
-$$
-\frac{1}{\sqrt{1 + x^2}} \neq \text{arcsin}
-$$
+```math
+\cosh^2x-\sinh^2x=1
+```
 
-Correct:
-$$
-= \sinh^{-1} x
-$$
+Compare it with the trigonometric identity
 
----
+```math
+\sin^2x+\cos^2x=1.
+```
 
-## Trap 2: Forgetting domain restrictions
-
-$$
-\cosh^{-1} x \quad \text{requires} \quad x \ge 1
-$$
-
-$$
-\tanh^{-1} x \quad \text{requires} \quad -1 < x < 1
-$$
+The structure is similar, but the sign is different.
 
 ---
 
-## Trap 3: Missing simplification opportunity
+## 5. Common Exam Traps
 
-$$
-\frac{e^x - e^{-x}}{2}
-$$
+### Trap 1: Confusing Hyperbolic and Inverse-Trigonometric Patterns
 
-Don’t leave it like this → write:
-$$
-\sinh x
-$$
+```math
+\frac{1}{\sqrt{1+x^2}}
+\ne
+\frac{d}{dx}(\arcsin x)
+```
+
+Instead,
+
+```math
+\frac{1}{\sqrt{1+x^2}}
+=
+\frac{d}{dx}(\sinh^{-1}x).
+```
+
+### Trap 2: Ignoring Domain Restrictions
+
+- $\cosh^{-1}x$ requires $x\ge 1$.
+- $\tanh^{-1}x$ requires $-1<x<1$.
+
+### Trap 3: Missing a Simplification
+
+Rewrite
+
+```math
+\frac{e^x-e^{-x}}{2}
+```
+
+as $\sinh x$ when that form makes the problem easier.
 
 ---
 
-# 6. QUICK MENTAL FLOW (USE THIS DURING PROBLEMS)
+## 6. Quick Mental Flow
 
-1. Do I see exponentials like $e^x$ and $e^{-x}$?
-   → rewrite as $\sinh, \cosh$
-
-2. Do I see $\sqrt{x^2 \pm 1}$?
-   → use hyperbolic substitution
-
-3. Do I see $\ln(x + \sqrt{x^2 \pm 1})$?
-   → convert to inverse hyperbolic
-
-4. Does derivative look like:
-   $$
-   \frac{1}{\sqrt{1 + x^2}}
-   $$
-   → inverse hyperbolic, not trig
+1. Exponentials $e^x$ and $e^{-x}$ appearing symmetrically? Try $\sinh$ or $\cosh$.
+2. Radical $\sqrt{x^2\pm1}$? Consider a hyperbolic substitution.
+3. Logarithm $\ln\left(x+\sqrt{x^2\pm1}\right)$? Check for an inverse hyperbolic function.
+4. Derivative pattern $1/\sqrt{1+x^2}$? Think $\sinh^{-1}x$.
 
 ---
 
-# 7. BIG PICTURE
+## 7. Big Picture
 
-Hyperbolic functions are:
+Hyperbolic functions are built from exponentials and often provide the cleanest language for expressions involving:
 
-- Built from exponentials
-- Cleaner than trig for certain integrals
-- The “natural language” of expressions involving:
-  - $x^2 + 1$
-  - $x^2 - 1$
-  - exponential symmetry
-
-👉 If trig feels forced, hyperbolic is probably the right tool
+- $x^2+1$;
+- $x^2-1$;
+- symmetric combinations of $e^x$ and $e^{-x}$.
