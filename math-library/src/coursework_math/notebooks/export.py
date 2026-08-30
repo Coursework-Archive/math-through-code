@@ -9,12 +9,8 @@ import tempfile
 from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
+import nbformat
 
-try:
-    import nbformat
-    from nbformat.v4 import new_markdown_cell
-except ImportError as exc:  # pragma: no cover - optional dependency
-    raise RuntimeError("Notebook export requires coursework-math[pdf].") from exc
 
 BAD_OUTPUT_KEYS = {"jetTransient"}
 BAD_CELL_KEYS: set[str] = set()
@@ -57,23 +53,6 @@ def sanitize_notebook(notebook: nbformat.NotebookNode) -> nbformat.NotebookNode:
     return cleaned
 
 
-def append_assistance_statement(notebook: nbformat.NotebookNode) -> None:
-    """Append the standard coursework-assistance statement."""
-
-    statement = r"""
-\vfill
-
----
-
-\begin{center}
-\small
-ChatGPT was used for Markdown and \LaTeX\ formatting assistance.  
-All mathematical reasoning, derivations, and conclusions are my own work and were independently checked for correctness.
-\end{center}
-"""
-    notebook.cells.append(new_markdown_cell(statement))
-
-
 def _run_nbconvert(
     notebook_path: Path,
     *,
@@ -88,7 +67,7 @@ def _run_nbconvert(
         "nbconvert",
         "--to",
         "pdf",
-        "--PDFExporter.latex_command=['xelatex','{filename}','-quiet']",
+        "--PDFExporter.latex_command=['xelatex','{filename}']",
         "--output-dir",
         str(output_dir),
         "--output",
@@ -112,10 +91,9 @@ def _run_nbconvert(
 def export_notebook_pdf(
     notebook: str | Path,
     *,
-    author: str | None = None,
+    author: str = "Brittany L. Bales",
     date: str | None = None,
     output_dir: str | Path | None = None,
-    append_statement: bool = True,
     hide_input: bool = True,
 ) -> Path:
     """Sanitize and export a notebook, returning the expected PDF path."""
@@ -135,8 +113,6 @@ def export_notebook_pdf(
 
     loaded = nbformat.read(notebook_path, as_version=4)
     cleaned = sanitize_notebook(loaded)
-    if append_statement:
-        append_assistance_statement(cleaned)
 
     base_name = notebook_path.stem
     cleaned.metadata["title"] = title_from_filename(base_name)
@@ -163,14 +139,9 @@ def build_parser() -> argparse.ArgumentParser:
         description="Sanitize a Jupyter notebook and export it to PDF."
     )
     parser.add_argument("notebook", help="Path to a .ipynb notebook")
-    parser.add_argument("--author", default=None, help="Author metadata")
+    parser.add_argument("--author", default="Brittany L. Bales", help="Author metadata")
     parser.add_argument("--date", default=None, help="Date metadata")
     parser.add_argument("--output-dir", default=None, help="PDF output directory")
-    parser.add_argument(
-        "--no-statement",
-        action="store_true",
-        help="Do not append the coursework-assistance statement",
-    )
     parser.add_argument(
         "--show-input",
         action="store_true",
@@ -187,7 +158,6 @@ def main(argv: list[str] | None = None) -> int:
             author=args.author,
             date=args.date,
             output_dir=args.output_dir,
-            append_statement=not args.no_statement,
             hide_input=not args.show_input,
         )
     except (FileNotFoundError, RuntimeError, ValueError) as exc:

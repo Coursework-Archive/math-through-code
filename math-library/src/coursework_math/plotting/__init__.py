@@ -6,6 +6,7 @@ from .latex import display_equation, display_latex, equation_latex, label_latex
 from .limits import epsilon_delta_plot
 from .piecewise import Interval, Piece, plot_piecewise
 from .points import Point, plot_data_points, plot_polyline, transform_points
+from .triangles import plot_right_triangle
 
 __all__ = [
     "Interval",
@@ -23,4 +24,5 @@ __all__ = [
     "set_pi_ticks",
     "style_axes_origin_with_arrows",
     "transform_points",
+    "plot_right_triangle",
 ]
