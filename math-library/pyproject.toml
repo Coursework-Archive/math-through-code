@@ -52,6 +52,7 @@ all = [
 
 [project.scripts]
 math-notebook-pdf = "coursework_math.notebooks.export:main"
+math-transcribe = "coursework_math.transcription.cli:main"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
