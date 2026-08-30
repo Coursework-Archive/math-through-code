@@ -15,6 +15,7 @@ dist/
 # Jupyter notebooks and checkpoints
 *.ipynb
 .ipynb_checkpoints/
+smoke-test.pdf
 
 
 # LaTeX build artifacts
