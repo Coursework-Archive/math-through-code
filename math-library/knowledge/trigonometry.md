@@ -2,6 +2,8 @@
 
 ![Unit Circle](images/unit_circle.jpg)
 
+![Negative Unit Cirlce](images/unit_circle_neg.png)
+
 ## Unit Circle: Key Angles
 
 | $\theta$ | $\sin\theta$ | $\cos\theta$ | $\tan\theta$ |
@@ -108,6 +110,52 @@ A point on the unit circle has coordinates
 | Integrand | Antiderivative |
 |---|---|
 | $x^n,\;n\ne -1$ | $\dfrac{x^{n+1}}{n+1}+C$ |
+
+## Integrals of Powers
+
+
+$$
+\int \sin^m(x)\cos^n(x)\,dx
+$$
+
+Reference Pythagorean Indentities for u-substitution with Odd-trigonometric $\cos$ or $\sin$ terms
+
+Reference Half Angle Identities for u-sustitution with Even-trigonometric  $\cos$ or $\sin$ terms
+
+$$
+\int \tan^m(x)\sec^n(x)\,dx
+$$
+
+
+Reference Pythagorean Indentities for u-substitution with Even-trigonometric $\sec$ terms and Odd-trigonometric $\tan$ terms 
+
+Save a factor of
+
+$$
+\sec(x)\tan(x)
+$$
+
+Reference Pythagorean Indentities for u-substitution with Odd-trigonometric $\sec$ terms and Even-trigonometric $\tan$ terms 
+
+The direct $u$-substitution patterns above do not occur immediately.
+
+This may leave an odd power of secant, which can require an identity, reduction formula, or integration by parts.
+
+---
+
+### Quick Reference
+
+Even power of $\sec(x)$:
+
+$$
+\boxed{\text{Save }\sec^2(x),\qquad u=\tan(x)}
+$$
+
+Odd power of $\tan(x)$:
+
+$$
+\boxed{\text{Save }\sec(x)\tan(x),\qquad u=\sec(x)}
+$$
 
 ## Exponential and Logarithmic Integrals
 
@@ -229,6 +277,74 @@ A point on the unit circle has coordinates
 ```math
 \cos(2x)=1-2\sin^2x
 ```
+
+## Half-Angle Identities
+
+```math
+\sin^2x=\frac{1-\cos(2x)}{2}
+```
+
+```math
+\cos^2x=\frac{1+\cos(2x)}{2}
+```
+
+### Equivalent Forms
+
+```math
+\sin^2\left(\frac{x}{2}\right)=\frac{1-\cos x}{2}
+```
+
+```math
+\cos^2\left(\frac{x}{2}\right)=\frac{1+\cos x}{2}
+```
+
+# Trigonometric Substitution
+
+Use trigonometric substitution when an integral contains expressions involving
+$\sqrt{a^2-x^2}$, $\sqrt{a^2+x^2}$, or $\sqrt{x^2-a^2}$.
+
+| Expression | Substitution | Differential | Identity | Radical Simplifies To |
+|---|---|---|---|---|
+| adjacent\,$\sqrt{a^2-x^2}$ | $x=a\sin\theta$ | $dx=a\cos\theta\,d\theta$ | $1-\sin^2\theta=\cos^2\theta$ | $a\cos\theta$ |
+| hypotenus\,$\sqrt{a^2+x^2}$ | $x=a\tan\theta$ | $dx=a\sec^2\theta\,d\theta$ | $1+\tan^2\theta=\sec^2\theta$ | $a\sec\theta$ |
+| opposite\,$\sqrt{x^2-a^2}$ | $x=a\sec\theta$ | $dx=a\sec\theta\tan\theta\,d\theta$ | $\sec^2\theta-1=\tan^2\theta$ | $a\tan\theta$ |
+
+## Angle Restrictions
+
+For $x=a\sin\theta$:
+
+$-\frac{\pi}{2}\leq\theta\leq\frac{\pi}{2}$
+
+For $x=a\tan\theta$:
+
+$-\frac{\pi}{2}<\theta<\frac{\pi}{2}$
+
+For $x=a\sec\theta$:
+
+$0\leq\theta<\frac{\pi}{2}$
+or
+$\pi\leq\theta<\frac{3\pi}{2}$
+
+## Product Identities
+
+
+
+For products involving different angles or multiples of $x$, use the corresponding product-to-sum identity.
+
+$\sin A\cos B=\frac{1}{2}\left[\sin(A-B)+\sin(A+B)\right]$
+
+$\sin A\sin B=\frac{1}{2}\left[\cos(A-B)-\cos(A+B)\right]$
+
+$\cos A\cos B=\frac{1}{2}\left[\cos(A-B)+\cos(A+B)\right]$
+
+These are useful for integrals such as:
+
+$\int \sin(mx)\cos(nx)\,dx$
+
+$\int \sin(mx)\sin(nx)\,dx$
+
+$\int \cos(mx)\cos(nx)\,dx$
+
 
 ---
 

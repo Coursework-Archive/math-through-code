@@ -5,7 +5,7 @@
 After installing the package, prefer:
 
 ```powershell
-math-notebook-pdf path/to/notebook.ipynb --author "Brittany L. Bales"
+math-notebook-pdf .\notebooks\module-01\module_01_assignments.ipynb --author "Brittany L. Bales"
 ```
 
 The wrapper can still be called directly:
