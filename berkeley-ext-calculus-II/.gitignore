@@ -1,5 +1,6 @@
 # Virtual environment
 .venv/
+.idea/
 
 # Python caches
 __pycache__/
