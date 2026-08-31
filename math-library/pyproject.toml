@@ -19,7 +19,6 @@ license = "MIT"
 dependencies = [
     "matplotlib>=3.8",
     "numpy>=1.26",
-    "requests>=2.32",
     "sympy>=1.12",
 ]
 
@@ -53,7 +52,6 @@ all = [
 
 [project.scripts]
 math-notebook-pdf = "coursework_math.notebooks.export:main"
-math-transcribe = "coursework_math.transcription.cli:main"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
