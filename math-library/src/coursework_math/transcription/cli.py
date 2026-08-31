@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from .mathcraft import MathCraftTranscriber
+from .mathpix import MathpixTranscriber
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -17,9 +18,15 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("image", help="Path to a handwritten math image")
     parser.add_argument(
+        "--engine",
+        choices=("mathpix", "mathcraft"),
+        default="mathpix",
+        help="OCR engine (default: mathpix)",
+    )
+    parser.add_argument(
         "--provider",
         default="auto",
-        help="MathCraft execution provider (default: auto)",
+        help="MathCraft execution provider when --engine mathcraft is used",
     )
     parser.add_argument(
         "--format",
@@ -33,10 +40,14 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    image_path = Path(args.image)
 
-    result = MathCraftTranscriber(provider=args.provider).transcribe(
-        Path(args.image)
-    )
+    if args.engine == "mathcraft":
+        result = MathCraftTranscriber(provider=args.provider).transcribe(
+            image_path
+        )
+    else:
+        result = MathpixTranscriber().transcribe(image_path)
 
     if args.output_format == "markdown":
         print(result.as_markdown_math())
