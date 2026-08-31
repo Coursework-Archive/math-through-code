@@ -5,10 +5,13 @@ solve, correct, or complete mathematical work.
 """
 
 from .mathcraft import MathCraftTranscriber, MathCraftUnavailableError
+from .mathpix import MathpixCredentialsError, MathpixTranscriber
 from .models import TranscriptionResult
 
 __all__ = [
     "MathCraftTranscriber",
     "MathCraftUnavailableError",
+    "MathpixCredentialsError",
+    "MathpixTranscriber",
     "TranscriptionResult",
 ]
