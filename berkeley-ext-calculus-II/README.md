@@ -61,7 +61,7 @@ By the end of the course, the goal is to be able to:
 | Module / Exam | Official Topic | Text Sections | Status |
 |---|---|---:|---|
 | Module 1 | Integration by Parts, Trigonometric Integrals, and Trigonometric Substitution | 7.1–7.3 | ✅ Completed |
-| Module 2 | Partial Fractions and Strategies for Integration | 7.4–7.5 | ⬜ Not Started |
+| Module 2 | Partial Fractions and Strategies for Integration | 7.4–7.5 | ✅ Not Started |
 | Module 3 | Integration Tables, Approximate Integration, and Improper Integrals | 7.6–7.8 | ⬜ Not Started |
 | Module 4 | Arc Length and Areas | 8.1–8.2 | ⬜ Not Started |
 | Module 5 | Sequences and Series | 11.1–11.2 | ⬜ Not Started |
@@ -203,7 +203,6 @@ _Last updated: August 2026_
 python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
 python -m pip install -e "..\math-library[all]"
-python -m coursework_math.notebooks.editor
-python -m coursework_math.notebooks.export new.ipynb 
-math-notebook-pdf .\notebooks\module-01\module_01_assignments.ipynb
+python -m coursework_math.notebooks.editor # you will be prompted for notebook name, groups and exercise numbers
+math-notebook-pdf .\notebooks\module-02\module_02_assignments.ipynb
 ```
