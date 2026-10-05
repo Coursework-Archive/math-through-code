@@ -59,10 +59,10 @@ By the end of the course, the goal is to be able to:
 ## Modules 1–6: Integration and Beginning Series
 
 | Module / Exam | Official Topic | Text Sections | Status |
-|---|---|---:|---|
+|---|---|---:|--|
 | Module 1 | Integration by Parts, Trigonometric Integrals, and Trigonometric Substitution | 7.1–7.3 | ✅ Completed |
-| Module 2 | Partial Fractions and Strategies for Integration | 7.4–7.5 | ✅ Not Started |
-| Module 3 | Integration Tables, Approximate Integration, and Improper Integrals | 7.6–7.8 | ⬜ Not Started |
+| Module 2 | Partial Fractions and Strategies for Integration | 7.4–7.5 | ✅ Completed |
+| Module 3 | Integration Tables, Approximate Integration, and Improper Integrals | 7.6–7.8 | ✅ Completed |
 | Module 4 | Arc Length and Areas | 8.1–8.2 | ⬜ Not Started |
 | Module 5 | Sequences and Series | 11.1–11.2 | ⬜ Not Started |
 | Module 6 | Integral Test, Comparison Tests, and Alternating Series | 11.3–11.5 | ⬜ Not Started |
@@ -128,12 +128,10 @@ Course Grade = (Assignment Average × 0.40)
 
 ## Course Timeline
 
-- **Enrollment Date:** TBD
-- **45-Day Midterm Eligibility Date:** TBD
-- **90-Day Final Eligibility Date:** TBD
-- **Course Completion Deadline:** TBD
-- **Target Midterm Date:** TBD
-- **Target Final Exam Date:** TBD
+- **Enrollment Date:** 08/15/2026
+- **Course Completion Deadline:** 02/11/2027
+- **Target Midterm Prep Range:** 11/02 - 11/14
+- **Target Final Exam Prep Range:** 1/18 - 1/31
 
 The final exam should be scheduled with enough time for instructor approval,
 completion, grading, and unexpected delays before the course end date.
@@ -204,5 +202,5 @@ python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
 python -m pip install -e "..\math-library[all]"
 python -m coursework_math.notebooks.editor # you will be prompted for notebook name, groups and exercise numbers
-math-notebook-pdf .\notebooks\module-02\module_02_assignments.ipynb
+math-notebook-pdf .\notebooks\module-03\module_03_assignments.ipynb
 ```
