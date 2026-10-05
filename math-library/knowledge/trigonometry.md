@@ -387,6 +387,55 @@ $\int \cos(mx)\cos(nx)\,dx$
 
 ---
 
+## Standard Integration Forms
+
+| Form | If You See | Antiderivative | Recognition Cue |
+|---|---|---|---|
+| **Natural Log** | $\dfrac{1}{u}$ | $\ln\lvert u\rvert+C$ | Exponent $-1$ |
+| **Natural Log — Derivative Match** | $\dfrac{u}{u^2+a^2}$ | $\dfrac12\ln(u^2+a^2)+C$ | Numerator matches derivative of denominator |
+| **Arctangent** | $\dfrac{1}{u^2+a^2}$ | $\dfrac1a\arctan\left(\dfrac{u}{a}\right)+C$ | Sum of squares; no $u$ in numerator |
+| **Difference of Squares** | $\dfrac{1}{u^2-a^2}$ | $\dfrac{1}{2a}\ln\left\lvert\dfrac{u-a}{u+a}\right\rvert+C$ | Factor $\rightarrow$ partial fractions $\rightarrow$ logs |
+| **Reversed Difference of Squares** | $\dfrac{1}{a^2-u^2}$ | $\dfrac{1}{2a}\ln\left\lvert\dfrac{a+u}{a-u}\right\rvert+C$ | Factor $\rightarrow$ partial fractions $\rightarrow$ logs |
+| **Inverse Sine** | $\dfrac{1}{\sqrt{a^2-u^2}}$ | $\arcsin\left(\dfrac{u}{a}\right)+C$ | Square root of $a^2-u^2$ |
+| **Natural Log — Sum Under Radical** | $\dfrac{1}{\sqrt{u^2+a^2}}$ | $\ln\left\lvert u+\sqrt{u^2+a^2}\right\rvert+C$ | Square root of $u^2+a^2$ |
+| **Natural Log — Difference Under Radical** | $\dfrac{1}{\sqrt{u^2-a^2}}$ | $\ln\left\lvert u+\sqrt{u^2-a^2}\right\rvert+C$ | Square root of $u^2-a^2$ |
+
+### Main Recognition Rules
+
+```math
+\boxed{
+\frac{u}{u^2+a^2}
+\Longrightarrow
+\text{Natural log}
+}
+```
+
+```math
+\boxed{
+\frac{1}{u^2+a^2}
+\Longrightarrow
+\text{Arctangent}
+}
+```
+
+```math
+\boxed{
+\frac{1}{u^2-a^2}
+\text{ or }
+\frac{1}{a^2-u^2}
+\Longrightarrow
+\text{Factor and use partial fractions}
+}
+```
+
+```math
+\boxed{
+\frac{1}{\sqrt{a^2-u^2}}
+\Longrightarrow
+\text{Arcsine}
+}
+```
+
 # Three Important Derivative–Antiderivative Pairs
 
 ```math

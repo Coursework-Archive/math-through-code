@@ -44,6 +44,17 @@ Whenever $u$ contains trigonometric functions, powers, exponentials, or logarith
 
 ---
 
+## General Inverse-Trigonometric and Radical Antiderivatives 
+
+| Function $f(x)$ | Antiderivative $\int f(x)\,dx$ | 
+|---|---| 
+| $\dfrac{1}{x^2+a^2}$ | $\dfrac{1}{a}\tan^{-1}\left(\dfrac{x}{a}\right)+C$ | 
+| $\dfrac{1}{\sqrt{a^2-x^2}}$ | $\sin^{-1}\left(\dfrac{x}{a}\right)+C,\qquad a>0$ | 
+| $\dfrac{1}{x^2-a^2}$ | $\dfrac{1}{2a}\ln\left\lvert\dfrac{x-a}{x+a}\right\rvert+C$ | 
+| $\dfrac{1}{\sqrt{x^2+a^2}}$ | $\ln\left\lvert x+\sqrt{x^2+a^2}\right\rvert+C$ | 
+| $\dfrac{1}{\sqrt{x^2-a^2}}$ | $\ln\left\lvert x+\sqrt{x^2-a^2}\right\rvert+C$ |
+
+
 ## Hyperbolic Antiderivatives
 
 | Function $f(x)$ | Antiderivative $\int f(x)\,dx$ |
@@ -90,6 +101,11 @@ The absolute value is required because $1/x$ is defined for positive and negativ
 | $\sec x\tan x$ | $\sec x+C$ |
 | $\dfrac{1}{1+x^2}$ | $\tan^{-1}(x)+C$ |
 | $\dfrac{1}{\sqrt{1-x^2}}$ | $\sin^{-1}(x)+C$ |
+| $\dfrac{1}{x^2+a^2}$ | Arctangent pattern |
+| $\dfrac{1}{\sqrt{a^2-x^2}}$ | Arcsine pattern |
+| $\dfrac{1}{x^2-a^2}$ | Logarithmic pattern |
+| $\dfrac{1}{\sqrt{x^2+a^2}}$ | Logarithmic radical pattern |
+| $\dfrac{1}{\sqrt{x^2-a^2}}$ | Logarithmic radical pattern |
 
 ---
 
