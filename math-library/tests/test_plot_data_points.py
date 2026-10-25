@@ -46,3 +46,26 @@ def test_point_label_precision_can_be_customized() -> None:
 def test_negative_annotation_precision_is_rejected() -> None:
     with pytest.raises(ValueError, match="annotation_precision must be nonnegative"):
         plot_data_points([1], [0.5], annotation_precision=-1, show=False)
+
+
+def test_explicit_axis_limits() -> None:
+    ax = plot_data_points(
+        [1, 2], [0.5, 0.75], connect=False,
+        xlim=(0, 4), ylim=(0, 2), show=False,
+    )
+    try:
+        assert ax.get_xlim() == (0.0, 4.0)
+        assert ax.get_ylim() == (0.0, 2.0)
+    finally:
+        plt.close(ax.figure)
+
+
+def test_auto_axis_limits_when_omitted() -> None:
+    ax = plot_data_points([1, 2], [0.5, 0.75], connect=False, show=False)
+    try:
+        assert ax.get_xlim()[0] < 1
+        assert ax.get_xlim()[1] > 2
+        assert ax.get_ylim()[0] < 0.5
+        assert ax.get_ylim()[1] > 0.75
+    finally:
+        plt.close(ax.figure)
