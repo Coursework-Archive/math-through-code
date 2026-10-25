@@ -43,6 +43,10 @@ def plot_data_points(
     xlabel: str = "x",
     ylabel: str = "y",
     show_grid: bool = True,
+    annotate_points: bool = False,
+    annotation_precision: int = 4,
+    xlim: tuple[float, float] | None = None,
+    ylim: tuple[float, float] | None = None,
     tangent: bool = False,
     tangent_x0: float | None = None,
     tangent_y0: float | None = None,
@@ -50,7 +54,10 @@ def plot_data_points(
     ax: matplotlib.axes.Axes | None = None,
     show: bool = True,
 ) -> matplotlib.axes.Axes:
-    """Plot discrete data, optionally with a tangent-line illustration."""
+    """Plot discrete data, optionally labeling values and showing a tangent line."""
+
+    if annotation_precision < 0:
+        raise ValueError("annotation_precision must be nonnegative")
 
     if len(x) != len(y):
         raise ValueError("x and y must have the same length")
@@ -69,6 +76,17 @@ def plot_data_points(
         ax.plot(x, y, marker=marker, label="data")
     else:
         ax.scatter(x, y, marker=marker)
+
+    if annotate_points:
+        for x_value, y_value in zip(x, y, strict=True):
+            ax.annotate(
+                f"{float(y_value):.{annotation_precision}f}",
+                xy=(x_value, y_value),
+                xytext=(0, 10),
+                textcoords="offset points",
+                ha="center",
+                fontsize=9,
+            )
 
     if tangent:
         assert tangent_x0 is not None
@@ -93,6 +111,11 @@ def plot_data_points(
                 va="bottom" if dy > 0 else "top",
                 zorder=6,
             )
+
+    if xlim is not None:
+        ax.set_xlim(xlim)
+    if ylim is not None:
+        ax.set_ylim(ylim)
 
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
