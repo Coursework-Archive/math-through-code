@@ -23,12 +23,18 @@ def add_group_questions(
     notebook,
     group: str,
     questions: list[int],
+    page_break: bool = False
 ) -> None:
     """Add one group and its question cells to a notebook."""
 
+    heading = f"# Group {group}"
+
+    if page_break:
+        heading = f"\\newpage\n\n{heading}"
+
     notebook.cells.append(
         nbformat.v4.new_markdown_cell(
-            f"# Group {group}"
+            heading
         )
     )
 
@@ -76,11 +82,12 @@ def update_notebook(
 
     total_questions = 0
 
-    for group, questions in groups:
+    for index, (group, questions) in enumerate(groups):
         add_group_questions(
             notebook,
             group,
             questions,
+            page_break= index > 0
         )
 
         total_questions += len(questions)

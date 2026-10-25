@@ -63,7 +63,7 @@ By the end of the course, the goal is to be able to:
 | Module 1 | Integration by Parts, Trigonometric Integrals, and Trigonometric Substitution | 7.1–7.3 | ✅ Completed |
 | Module 2 | Partial Fractions and Strategies for Integration | 7.4–7.5 | ✅ Completed |
 | Module 3 | Integration Tables, Approximate Integration, and Improper Integrals | 7.6–7.8 | ✅ Completed |
-| Module 4 | Arc Length and Areas | 8.1–8.2 | ⬜ Not Started |
+| Module 4 | Arc Length and Areas | 8.1–8.2 |  ✅ Completed |
 | Module 5 | Sequences and Series | 11.1–11.2 | ⬜ Not Started |
 | Module 6 | Integral Test, Comparison Tests, and Alternating Series | 11.3–11.5 | ⬜ Not Started |
 | **Midterm Exam** | **Modules 1–6** | **Comprehensive through Module 6** | ⬜ Not Started |
@@ -202,5 +202,5 @@ python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
 python -m pip install -e "..\math-library[all]"
 python -m coursework_math.notebooks.editor # you will be prompted for notebook name, groups and exercise numbers
-math-notebook-pdf .\notebooks\module-03\module_03_assignments.ipynb
+math-notebook-pdf .\notebooks\module-04\module_04_assignments.ipynb
 ```
