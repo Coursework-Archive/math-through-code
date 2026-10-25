@@ -45,6 +45,8 @@ def plot_data_points(
     show_grid: bool = True,
     annotate_points: bool = False,
     annotation_precision: int = 4,
+    xlim: tuple[float, float] | None = None,
+    ylim: tuple[float, float] | None = None,
     tangent: bool = False,
     tangent_x0: float | None = None,
     tangent_y0: float | None = None,
@@ -109,6 +111,11 @@ def plot_data_points(
                 va="bottom" if dy > 0 else "top",
                 zorder=6,
             )
+
+    if xlim is not None:
+        ax.set_xlim(xlim)
+    if ylim is not None:
+        ax.set_ylim(ylim)
 
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
