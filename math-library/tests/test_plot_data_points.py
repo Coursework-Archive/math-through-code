@@ -13,7 +13,7 @@ from coursework_math.plotting import plot_data_points
 def test_point_labels_disabled_by_default() -> None:
     ax = plot_data_points([1, 2], [0.5, 0.75], connect=False, show=False)
     try:
-        assert ax.texts == []
+        assert len(ax.texts) == 0
     finally:
         plt.close(ax.figure)
 
