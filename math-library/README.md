@@ -115,7 +115,7 @@ The exporter:
 - exports without code-cell input,
 - writes the PDF beside the source notebook unless another output directory is supplied.
 
-PDF generation requires a working LaTeX installation with `xelatex`. That system dependency is separate from the Python package.
+PDF generation requires a working LaTeX installation with `xelatex` and the LaTeX `cancel` package. These system dependencies are separate from the Python package. The exporter converts supported MathJax diagonal strikes (`\\enclose{updiagonalstrike}{...}`) into LaTeX `\\cancel{...}` commands in a temporary notebook copy, leaving the original notebook unchanged.
 
 The original command remains available during migration:
 
