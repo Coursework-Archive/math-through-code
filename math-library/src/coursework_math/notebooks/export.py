@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import subprocess
 import sys
 import tempfile
@@ -14,6 +15,18 @@ import nbformat
 
 BAD_OUTPUT_KEYS = {"jetTransient"}
 BAD_CELL_KEYS: set[str] = set()
+# MathJax's diagonal strike is not a XeLaTeX command.
+UPDIAGONAL_STRIKE = re.compile(r"\\enclose\s*\{updiagonalstrike\}\s*\{")
+
+
+def normalize_math_latex(source: str) -> str:
+    """Translate MathJax diagonal strikes to the LaTeX cancel command.
+
+    The matched prefix is replaced without altering nested math expressions.
+    """
+    return UPDIAGONAL_STRIKE.sub(lambda match: r"\cancel{", source)
+
+
 
 
 def format_today() -> str:
@@ -34,6 +47,9 @@ def sanitize_notebook(notebook: nbformat.NotebookNode) -> nbformat.NotebookNode:
 
     cleaned = deepcopy(notebook)
     for cell in cleaned.get("cells", []):
+        if cell.get("cell_type") == "markdown":
+            cell["source"] = normalize_math_latex(cell.get("source", ""))
+
         for key in list(cell.keys()):
             if key in BAD_CELL_KEYS:
                 cell.pop(key, None)
@@ -46,6 +62,16 @@ def sanitize_notebook(notebook: nbformat.NotebookNode) -> nbformat.NotebookNode:
                 continue
             for key in BAD_OUTPUT_KEYS:
                 output.pop(key, None)
+            data = output.get("data")
+            if isinstance(data, dict) and "text/latex" in data:
+                latex = data["text/latex"]
+                if isinstance(latex, str):
+                    data["text/latex"] = normalize_math_latex(latex)
+                elif isinstance(latex, list):
+                    data["text/latex"] = [
+                        normalize_math_latex(part) if isinstance(part, str) else part
+                        for part in latex
+                    ]
             metadata = output.get("metadata")
             if isinstance(metadata, dict):
                 for key in BAD_OUTPUT_KEYS:
@@ -67,6 +93,9 @@ def _run_nbconvert(
         "nbconvert",
         "--to",
         "pdf",
+        "--template",
+        "coursework_pdf",
+        f"--TemplateExporter.extra_template_basedirs={Path(__file__).parent / 'templates'}",
         "--PDFExporter.latex_command=['xelatex','{filename}']",
         "--output-dir",
         str(output_dir),
@@ -83,9 +112,10 @@ def _run_nbconvert(
     if result.stderr:
         print(result.stderr, file=sys.stderr)
     if result.returncode != 0:
-        raise RuntimeError(
-            "Notebook PDF export failed. Confirm nbconvert and xelatex are installed."
-        )
+        combined_output = "\n".join((result.stderr or "", result.stdout or ""))
+        latex_error = re.search(r"(?m)^! .+$", combined_output)
+        detail = latex_error.group(0) if latex_error else "See the nbconvert output above."
+        raise RuntimeError(f"Notebook PDF export failed: {detail}")
 
 
 def export_notebook_pdf(
