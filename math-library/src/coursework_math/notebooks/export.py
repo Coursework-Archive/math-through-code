@@ -10,11 +10,13 @@ import tempfile
 from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
+
 import nbformat
 
 
 BAD_OUTPUT_KEYS = {"jetTransient"}
 BAD_CELL_KEYS: set[str] = set()
+
 # MathJax's diagonal strike is not a XeLaTeX command.
 UPDIAGONAL_STRIKE = re.compile(r"\\enclose\s*\{updiagonalstrike\}\s*\{")
 
@@ -25,7 +27,6 @@ def normalize_math_latex(source: str) -> str:
     The matched prefix is replaced without altering nested math expressions.
     """
     return UPDIAGONAL_STRIKE.sub(lambda match: r"\cancel{", source)
-
 
 
 
